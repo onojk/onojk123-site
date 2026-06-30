@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeno's Woodchipper</title>
+<meta name="description" content="Two machines that look identical. One fills a bag and stops. The other, fed the primes, makes an infinite pile out of infinitely tiny chips — and never, ever stops. A short piece on Euler, Euclid, and the chipper that defeats Zeno.">
+<meta property="og:title" content="Zeno's Woodchipper">
+<meta property="og:description" content="The machine whose chips shrink to nothing and whose pile grows to infinity — running forever on the inexhaustible wood of the primes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1a1814;--ink-soft:#4a4640;--ink-faint:#7d776c;--paper:#f6f2e9;--paper-deep:#efe9db;--line:#d9d1bf;--kink:#b2401f;--turn:#2f5d63;--leaf:#7a8b2f;--maxw:42rem;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Spectral",Georgia,serif;font-size:1.18rem;line-height:1.72;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem}
+  header{padding:4.5rem 0 0;margin-bottom:2rem}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.3rem;}
+  h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(2.6rem,8vw,4.4rem);line-height:1;letter-spacing:-.02em;margin:0 0 1.1rem;}
+  .standfirst{font-size:1.3rem;line-height:1.5;color:var(--ink-soft);font-style:italic;margin:0 0 1.8rem;}
+  .byline{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:1.1rem;}
+  .byline a{color:var(--turn);text-decoration:none;border-bottom:1px solid transparent}
+  .byline a:hover{border-color:var(--turn)}
+  .kinkrule{display:block;width:100%;height:32px;margin:2.8rem 0;overflow:visible}
+  .kinkrule path{fill:none;stroke:var(--kink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  p{margin:0 0 1.5rem}
+  section>.wrap>p:first-of-type::first-letter{font-family:"Fraunces",serif;font-weight:500;float:left;font-size:4.2rem;line-height:.78;padding:.35rem .5rem 0 0;color:var(--kink)}
+  h2{font-family:"Fraunces",serif;font-weight:500;font-size:1.9rem;line-height:1.1;margin:1rem 0 1.2rem}
+  em{font-style:italic}
+  strong{font-weight:500}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--paper-deep);padding:.05em .35em;border-radius:3px;color:var(--kink)}
+  blockquote{margin:2.4rem 0;padding:0 0 0 1.4rem;border-left:2px solid var(--kink);font-family:"Fraunces",serif;font-size:1.45rem;line-height:1.3}
+  blockquote p{margin:0}
+  figure{margin:2.2rem 0}
+  figure.full{max-width:none;margin-left:calc(-1*max(0px,(100vw - var(--maxw))/2 - 1.5rem));margin-right:calc(-1*max(0px,(100vw - var(--maxw))/2 - 1.5rem))}
+  .stage{background:#fbf8f0;border:1px solid var(--line);border-radius:10px;padding:1rem;position:relative}
+  .stage canvas{display:block;max-width:100%;border-radius:6px;margin:0 auto}
+  figcaption{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-faint);margin-top:.8rem;line-height:1.5;text-align:center}
+  .controls{margin-top:.7rem;display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+  button{font-family:"IBM Plex Mono",monospace;font-size:.76rem;padding:.38rem .85rem;border:1px solid var(--kink);background:#fbf8f0;color:var(--kink);border-radius:5px;cursor:pointer}
+  button:hover{background:var(--kink);color:#fbf8f0}
+  .readout{position:absolute;top:14px;left:18px;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);line-height:1.6;pointer-events:none}
+  .readout b{color:var(--kink)}
+  footer{margin-top:3.5rem;border-top:1px solid var(--line);padding:2rem 0 5rem;font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.8;color:var(--ink-faint)}
+  footer a{color:var(--turn);text-decoration:none;border-bottom:1px solid transparent}
+  footer a:hover{border-color:var(--turn)}
+  @media(max-width:560px){body{font-size:1.08rem}figure.full{margin-left:-1rem;margin-right:-1rem}}
+  @media(prefers-reduced-motion:no-preference){.kinkrule path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.4s ease-out forwards}@keyframes draw{to{stroke-dashoffset:0}}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">A short piece · onojk123</p>
+    <h1>Zeno's Woodchipper</h1>
+    <p class="standfirst">Two machines that look identical. One fills a bag and stops. The other never stops — and that difference is the whole of it.</p>
+    <p class="byline">Jonathan Kendall · companion to <a href="https://onojk123.com">The Rig</a> &amp; <a href="https://rsacrack.com">rsacrack.com</a></p>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <p>Imagine a woodchipper that throws a chip each time it passes a number, and each chip is smaller than the last. Feed it, and it spits: a chip, a smaller chip, a smaller one still, the chips fading toward dust. Now picture two of these machines, side by side, looking exactly alike. The only difference is hidden inside — <em>which numbers</em> each one chips on. And that single hidden difference decides whether the machine ever stops.</p>
+  </div>
+
+  <svg class="kinkrule" viewBox="0 0 600 32" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,16 L21.4,16 L25.4,6 L29.4,26 L32.4,16 L38.3,16 L42.3,26 L46.3,6 L49.3,16 L55.2,16 L59.2,6 L63.2,26 L66.2,16 L89.0,16 L93.0,26 L97.0,6 L100.0,16 L139.7,16 L143.7,6 L147.7,26 L150.7,16 L190.4,16 L194.4,26 L198.4,6 L201.4,16 L241.1,16 L245.1,6 L249.1,26 L252.1,16 L308.7,16 L312.7,26 L316.7,6 L319.7,16 L393.2,16 L397.2,6 L401.2,26 L404.2,16 L494.6,16 L498.6,26 L502.6,6 L505.6,16 L600,16"/>
+  </svg>
+
+  <div class="wrap">
+    <h2>The first machine fills a bag</h2>
+    <p>The first chipper throws chips of size one-half, then one-quarter, then one-eighth — each exactly half the one before. It runs, the chips shrink, and the pile climbs: a half, then three-quarters, then seven-eighths… creeping toward a single full bag and no further. <code>½ + ¼ + ⅛ + … = 1</code>. The chipper finishes. The chips become dust, the bag fills to the brim, and the total is bounded, tidy, done.</p>
+    <p>This is the ordinary resolution of an old worry. Zeno said: to cross a room you must first cross half, then half the rest, then half of that — infinitely many steps, so you can never arrive. The answer is this first machine. Infinitely many shrinking steps can add to a finite total. The bag fills. You arrive. The shrinking <em>saves</em> you.</p>
+  </div>
+
+  <svg class="kinkrule" viewBox="0 0 600 32" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,16 L21.4,16 L25.4,6 L29.4,26 L32.4,16 L38.3,16 L42.3,26 L46.3,6 L49.3,16 L55.2,16 L59.2,6 L63.2,26 L66.2,16 L89.0,16 L93.0,26 L97.0,6 L100.0,16 L139.7,16 L143.7,6 L147.7,26 L150.7,16 L190.4,16 L194.4,26 L198.4,6 L201.4,16 L241.1,16 L245.1,6 L249.1,26 L252.1,16 L308.7,16 L312.7,26 L316.7,6 L319.7,16 L393.2,16 L397.2,6 L401.2,26 L404.2,16 L494.6,16 L498.6,26 L502.6,6 L505.6,16 L600,16"/>
+  </svg>
+
+  <div class="wrap">
+    <h2>The second machine never does</h2>
+    <p>The second chipper looks the same and behaves the same — its chips shrink too. But it is fed the <em>primes</em>. It throws a chip of one-half at 2, one-third at 3, one-fifth at 5, one-seventh at 7, a-eleventh at 11. The chips fade toward dust, exactly like the first machine. By every appearance it should fill its bag and stop.</p>
+    <p>It never does. The pile grows forever. The total <code>½ + ⅓ + ⅕ + ⅐ + … </code> climbs without end — slowly, unbelievably slowly, but without any ceiling at all. This is a theorem, proved by Euler in 1737: the sum of the reciprocals of the primes diverges. Same shrinking chips. Opposite fate. The first machine fills one bag; the second fills no bag, ever.</p>
+  </div>
+
+  <figure class="full">
+    <div class="stage">
+      <canvas id="chipper" width="600" height="420"></canvas>
+      <div class="readout" id="hud"></div>
+      <div class="controls">
+        <button id="play">pause</button>
+        <button id="reset">reset</button>
+      </div>
+    </div>
+    <figcaption>Both chippers, racing. The Zeno machine (grey) fills its bag and stops at 1. Zeno's Woodchipper (red), fed the primes, keeps climbing — fainter chips, longer silences, no ceiling. Watch the grey line halt and the red line refuse to.</figcaption>
+  </figure>
+
+  <div class="wrap">
+    <h2>Why it cannot stop</h2>
+    <p>Two reasons, both old and both certain. It never runs out of wood, because the primes never run out — Euclid proved that around 300 BC: hand the machine every prime you can name, and a larger one is always waiting past the pile. And the pile never finishes climbing, because the primes are spaced <em>just</em> sparsely enough — they thin as you go, but only lazily, like the logarithm — that even their fading reciprocals never settle to a sum.</p>
+    <p>So Zeno's Woodchipper is the machine that breaks the rule the first machine obeys. Shrinking chips were supposed to mean a finite pile; that was the whole resolution. Feed those same shrinking chips on the primes and the resolution fails. It is the one chipper that plays by Zeno's rules — each chip smaller than the last — and still runs until the end of time.</p>
+    <blockquote><p>Feed it halves, and it finishes. Feed it primes, and it runs forever. The machine is the same; the primes are what make it never stop.</p></blockquote>
+    <p>What do you do with such a thing? Nothing, and that is the point. You let it run. It is a machine built not to produce but to <em>persist</em> — to demonstrate, one shrinking chip at a time, in the gentlest way there is, that some wood never runs out, and that some endless things still amount to everything. The chips fade toward silence. The pile grows toward infinity. And the slowest woodchipper in the universe never, ever jams.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Zeno's Woodchipper — the chips shrink to nothing; the pile grows to infinity; it runs forever on the inexhaustible wood of the primes. Euler (the pile never settles) and Euclid (the wood never ends) are both theorems.<br><br>
+    Jonathan Kendall · <a href="https://onojk123.com">onojk123.com</a> · <a href="https://rsacrack.com">rsacrack.com</a>
+  </div>
+</footer>
+
+<script>
+function isP(n){if(n<2)return false;for(let d=2;d*d<=n;d++)if(n%d===0)return false;return true;}
+const primes=[];for(let n=2;primes.length<200;n++)if(isP(n))primes.push(n);
+const cv=document.getElementById('chipper'),ctx=cv.getContext('2d'),hud=document.getElementById('hud');
+const W=600,H=420,padL=60,padR=30,padT=30,padB=50;
+const plotW=W-padL-padR, plotH=H-padT-padB;
+const yMax=2.2; // visible range
+function Y(v){return padT+plotH-(v/yMax)*plotH;}
+function X(i,n){return padL+(i/n)*plotW;}
+let k=0,t=0,playing=true; const beat=10;
+let zenoSum=0, primeSum=0;
+const zenoPts=[], primePts=[];
+function frame(){
+  ctx.clearRect(0,0,W,H);
+  // axes
+  ctx.strokeStyle='#e1ddd0';ctx.lineWidth=1;
+  for(let v=0;v<=2;v++){const y=Y(v);ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke();
+    ctx.fillStyle='#a39b8c';ctx.font='11px monospace';ctx.fillText(v.toFixed(0),padL-20,y+4);}
+  // the '1' bag line for zeno
+  ctx.strokeStyle='#b8b0a0';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(padL,Y(1));ctx.lineTo(W-padR,Y(1));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='#a39b8c';ctx.font='10px monospace';ctx.fillText('the bag (=1)',W-padR-78,Y(1)-6);
+
+  const N=60;
+  // advance
+  if(playing && t%beat===0 && k<N){
+    zenoSum+=1/Math.pow(2,k+1);
+    primeSum+=1/primes[k];
+    zenoPts.push([k,zenoSum]); primePts.push([k,primeSum]);
+    k++;
+  }
+  // draw zeno (grey) — halts visually at 1
+  ctx.strokeStyle='#9a9384';ctx.lineWidth=2;ctx.beginPath();
+  zenoPts.forEach((p,i)=>{const x=X(p[0],N),y=Y(Math.min(p[1],yMax));i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();
+  // draw prime (red) — climbs past 1
+  ctx.strokeStyle='#b2401f';ctx.lineWidth=2.5;ctx.beginPath();
+  primePts.forEach((p,i)=>{const x=X(p[0],N),y=Y(Math.min(p[1],yMax));i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();
+  // chip flecks for the prime machine (little marks at each tick, size ~ 1/p)
+  primePts.forEach(p=>{const x=X(p[0],N),y=Y(Math.min(p[1],yMax));const r=Math.max(1,6/primes[p[0]]*3);
+    ctx.fillStyle='rgba(178,64,31,0.5)';ctx.beginPath();ctx.arc(x,y,r+1.5,0,7);ctx.fill();});
+
+  const ci=Math.min(k,N)-1;
+  if(ci>=0){
+    hud.innerHTML='chip #'+(ci+1)+' · at prime <b>'+primes[ci]+'</b><br>'+
+      'Zeno pile (grey): <b>'+zenoSum.toFixed(4)+'</b> → fills the bag<br>'+
+      'Prime pile (red): <b>'+primeSum.toFixed(4)+'</b> → climbs on';
+  }
+  if(t%beat===0 && k>=N){ /* hold */ }
+  t++;
+  requestAnimationFrame(frame);
+}
+document.getElementById('play').onclick=function(){playing=!playing;this.textContent=playing?'pause':'play';};
+document.getElementById('reset').onclick=()=>{k=0;t=0;zenoSum=0;primeSum=0;zenoPts.length=0;primePts.length=0;};
+frame();
+</script>
+</body>
+</html>
