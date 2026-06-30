@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rig — a way to see factoring</title>
+<meta name="description" content="The Rig: a moving geometric picture of factoring and one-way functions. A triangle of two primes, launched up the axes, blooming into circles — a way to SEE why some numbers keep a secret. An art-and-intuition project by Jonathan Kendall.">
+<meta property="og:title" content="The Rig — a way to see factoring">
+<meta property="og:description" content="A triangle of two primes, launched up the axes, blooming into circles. A way to see the wall that hides a secret.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1814; --ink-soft:#4a4640; --ink-faint:#7d776c;
+    --paper:#f6f2e9; --paper-deep:#efe9db; --line:#d9d1bf;
+    --kink:#b2401f; --turn:#2f5d63; --leaf:#7a8b2f; --maxw:44rem;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Spectral",Georgia,serif;font-size:1.18rem;line-height:1.72;font-weight:400;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem}
+
+  header.masthead{padding:5rem 0 0;margin-bottom:2.5rem}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.4rem;}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(3rem,9vw,5.5rem);
+    line-height:.98;letter-spacing:-.02em;margin:0 0 1.2rem;}
+  .standfirst{font-size:1.35rem;line-height:1.5;color:var(--ink-soft);font-style:italic;
+    max-width:36rem;margin:0 0 2rem;}
+  .byline{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.04em;
+    color:var(--ink-faint);border-top:1px solid var(--line);padding-top:1.1rem;}
+  .byline a{color:var(--turn);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  .byline a:hover{border-color:var(--turn)}
+
+  .kinkrule{display:block;width:100%;height:34px;margin:3rem 0;overflow:visible}
+  .kinkrule path{fill:none;stroke:var(--kink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+  main{padding-bottom:1rem}
+  p{margin:0 0 1.5rem}
+  section > .wrap > p:first-of-type::first-letter{font-family:"Fraunces",serif;font-weight:500;float:left;
+    font-size:4.4rem;line-height:.78;padding:.35rem .55rem 0 0;color:var(--kink);}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:2rem;line-height:1.1;
+    letter-spacing:-.01em;margin:1rem 0 1.3rem;color:var(--ink);}
+  .section-no{display:block;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+    color:var(--kink);margin-bottom:.5rem;font-weight:500;}
+  em{font-style:italic}
+  strong{font-weight:500;color:var(--ink)}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--paper-deep);
+    padding:.05em .35em;border-radius:3px;color:var(--kink);}
+
+  blockquote{margin:2.6rem 0;padding:0 0 0 1.4rem;border-left:2px solid var(--kink);
+    font-family:"Fraunces",serif;font-weight:400;font-size:1.5rem;line-height:1.32;color:var(--ink);}
+  blockquote p{margin:0}
+
+  figure{margin:2.4rem 0}
+  figure.full{max-width:none;margin-left:calc(-1*max(0px,(100vw - var(--maxw))/2 - 1.5rem));
+    margin-right:calc(-1*max(0px,(100vw - var(--maxw))/2 - 1.5rem));}
+  .stage{background:#fbf8f0;border:1px solid var(--line);border-radius:10px;padding:1rem;
+    display:flex;flex-direction:column;align-items:center;position:relative;}
+  .stage canvas{display:block;max-width:100%;border-radius:6px;}
+  figcaption{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-faint);
+    margin-top:.8rem;line-height:1.5;text-align:center;}
+  .controls{margin-top:.7rem;display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;align-items:center}
+  button{font-family:"IBM Plex Mono",monospace;font-size:.76rem;padding:.38rem .85rem;border:1px solid var(--kink);
+    background:#fbf8f0;color:var(--kink);border-radius:5px;cursor:pointer;transition:all .15s}
+  button:hover{background:var(--kink);color:#fbf8f0}
+  .controls label{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-soft);display:flex;align-items:center;gap:.35rem}
+  select{font-family:"IBM Plex Mono",monospace;font-size:.74rem;padding:.2rem;border:1px solid var(--line);border-radius:4px;background:#fbf8f0}
+  .readout{position:absolute;top:14px;left:18px;font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--ink-soft);line-height:1.5;pointer-events:none}
+  .readout b{color:var(--kink)}
+  .tag{display:inline-block;margin-top:3px;padding:1px 7px;border-radius:3px;font-size:.7rem}
+  .tag.s{background:var(--kink);color:#fbf8f0}
+  .tag.w{background:#dfe3d2;color:#5a5f3a}
+
+  .honest{background:var(--paper-deep);border:1px solid var(--line);border-radius:8px;
+    padding:1.3rem 1.5rem;margin:2.6rem 0;font-size:1rem;line-height:1.6;color:var(--ink-soft)}
+  .honest .lbl{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--kink);margin-bottom:.5rem}
+
+  footer{margin-top:4rem;border-top:1px solid var(--line);padding:2.2rem 0 5rem;
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.8;color:var(--ink-faint);letter-spacing:.02em;}
+  footer a{color:var(--turn);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  footer a:hover{border-color:var(--turn)}
+
+  @media (max-width:560px){
+    body{font-size:1.08rem}
+    header.masthead{padding-top:3rem}
+    .standfirst{font-size:1.15rem}
+    figure.full{margin-left:-1rem;margin-right:-1rem}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .kinkrule path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.4s ease-out forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">An art &amp; intuition project · onojk123</p>
+    <h1>The Rig</h1>
+    <p class="standfirst">A triangle of two primes, launched up the axes, blooming into circles — a way to <em>see</em> the wall that hides a secret.</p>
+    <p class="byline">Jonathan Kendall · San Diego · companion to <a href="https://rsacrack.com">rsacrack.com</a></p>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <p>This is not a proof and not a cipher. It is a <em>way of seeing</em>. Multiplying two numbers is easy; pulling them back apart — factoring — is hard, and that small asymmetry is the hinge the whole modern lock-and-key world hangs on. The Rig is a moving picture of that asymmetry. Two primes become the two legs of a triangle. The triangle is launched up the axes and grows. It blooms into circles. And somewhere in the growing and the blooming you can watch, with your eyes, why a number can carry a secret that even its owner can only open with a key they kept.</p>
+    <p>Everything here is honest about what it is: a visualization. Where it touches real cryptography, it says so. Where it is only a beautiful way to think, it says that too.</p>
+  </div>
+</section>
+
+<svg class="kinkrule" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true">
+  <title>A rule that kinks only at the prime numbers, thinning as they do</title>
+  <path d="M0,17 L12.9,17 L16.9,7 L20.9,27 L23.9,17 L38.3,17 L42.3,7 L46.3,27 L49.3,17 L55.2,17 L59.2,27 L63.2,7 L66.2,17 L89.0,17 L93.0,7 L97.0,27 L100.0,17 L105.9,17 L109.9,27 L113.9,7 L116.9,17 L139.7,17 L143.7,7 L147.7,27 L150.7,17 L156.6,17 L160.6,27 L164.6,7 L167.6,17 L190.4,17 L194.4,7 L198.4,27 L201.4,17 L241.1,17 L245.1,27 L249.1,7 L252.1,17 L258.0,17 L262.0,7 L266.0,27 L269.0,17 L308.7,17 L312.7,27 L316.7,7 L319.7,17 L342.5,17 L346.5,7 L350.5,27 L353.5,17 L359.4,17 L363.4,27 L367.4,7 L370.4,17 L393.2,17 L397.2,7 L401.2,27 L404.2,17 L443.9,17 L447.9,27 L451.9,7 L454.9,17 L494.6,17 L498.6,7 L502.6,27 L505.6,17 L511.5,17 L515.5,27 L519.5,7 L522.5,17 L562.2,17 L566.2,7 L570.2,27 L573.2,17 L600,17"/>
+</svg>
+
+<section>
+  <div class="wrap">
+    <p class="section-no">I — THE LAUNCH</p>
+    <h2>Two rockets up the axes</h2>
+    <p>The Rig is built by two clocks. One climbs the horizontal axis, the other the vertical, and each <em>notches off one prime at a time</em> — 2, 3, 5, 7, 11, 13 — like two rockets rising, leaving a vapor trail of primes behind them. The triangle is the span stretched taut between the two rising tips: two prime legs, and the long diagonal closing them. Its area is half their product — half a semiprime. That product is the public number; the two legs are the secret split that made it.</p>
+    <p>When the two rockets climb at the <em>same</em> thrust, the triangle stays balanced — tall as it is wide. When one outruns the other, it leans into a thin sliver. Watch the bloom: the same two legs spin out circles, one per side, and where the legs are equal the circles are equal and the flower is round.</p>
+  </div>
+
+  <figure class="full">
+    <div class="stage">
+      <canvas id="flower" width="600" height="560"></canvas>
+      <div class="readout" id="flowerHud"></div>
+      <div class="controls">
+        <button id="flowerPlay">pause</button>
+        <button id="flowerReset">reset</button>
+        <label>base thrust <select id="rb"><option>1</option><option>2</option><option>3</option></select></label>
+        <label>height thrust <select id="rh"><option>1</option><option>2</option><option>3</option></select></label>
+      </div>
+    </div>
+    <figcaption>The breathing rig. Two prime-rockets climb the axes; the triangle stretches between them and its vesica circles bloom. Equal thrust → round, balanced bloom. Unequal → it shears toward the faster rocket. It pulses in the jagged meter of the prime gaps.</figcaption>
+  </figure>
+</section>
+
+<svg class="kinkrule" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true">
+  <title>The prime rule, thinning rightward</title>
+  <path d="M0,17 L21.4,17 L25.4,7 L29.4,27 L32.4,17 L38.3,17 L42.3,27 L46.3,7 L49.3,17 L55.2,17 L59.2,7 L63.2,27 L66.2,17 L89.0,17 L93.0,27 L97.0,7 L100.0,17 L105.9,17 L109.9,7 L113.9,27 L116.9,17 L139.7,17 L143.7,27 L147.7,7 L150.7,17 L156.6,17 L160.6,7 L164.6,27 L167.6,17 L190.4,17 L194.4,27 L198.4,7 L201.4,17 L241.1,17 L245.1,7 L249.1,27 L252.1,17 L258.0,17 L262.0,27 L266.0,7 L269.0,17 L308.7,17 L312.7,7 L316.7,27 L319.7,17 L342.5,17 L346.5,27 L350.5,7 L353.5,17 L359.4,17 L363.4,7 L367.4,27 L370.4,17 L393.2,17 L397.2,27 L401.2,7 L404.2,17 L443.9,17 L447.9,7 L451.9,27 L454.9,17 L494.6,17 L498.6,27 L502.6,7 L505.6,17 L511.5,17 L515.5,7 L519.5,27 L522.5,17 L562.2,17 L566.2,27 L570.2,7 L573.2,17 L600,17"/>
+</svg>
+
+<section>
+  <div class="wrap">
+    <p class="section-no">II — THE SCAN</p>
+    <h2>The shape is the difficulty</h2>
+    <p>Now tick the Rig not by free primes but by the real factor-pairs of each semiprime in turn. Each beat the legs become the true factors of the next number — and the triangle's <em>shape</em> becomes a difficulty meter. Most semiprimes have a small factor, so most triangles are thin slivers: lopsided, easy to pull apart. But at the rare <em>balanced</em> ones — where the two primes are close — the triangle snaps fat and the flower blooms round.</p>
+    <p>Those round blooms are the strong numbers, the hard-to-factor ones. They fall where the primes run close together. The whole sequence becomes a landscape: a long run of thin sheared slivers, snapping occasionally to a fat round bloom exactly at the balanced semiprimes.</p>
+  </div>
+
+  <figure class="full">
+    <div class="stage">
+      <canvas id="scanner" width="600" height="520"></canvas>
+      <div class="readout" id="scanHud"></div>
+      <div class="controls">
+        <button id="scanPlay">pause</button>
+        <button id="scanReset">reset</button>
+        <button id="scanStep">step ▸</button>
+        <label><input type="checkbox" id="scanHold" checked> linger on strong ones</label>
+      </div>
+    </div>
+    <figcaption>The semiprime scanner. Each tick lays out a real factorization as its triangle. Thin &amp; grey = lopsided, easy. Fat &amp; red = balanced, strong — the hard-to-factor semiprimes, where the bloom goes round.</figcaption>
+  </figure>
+
+  <div class="honest">
+    <div class="lbl">An honest note on picking keys</div>
+    The fat balanced bloom is the right intuition — strong numbers use two <em>large, comparable</em> primes, never a small factor. But the very fattest (two primes almost touching) are <em>also</em> weak, crackable by a method that walks outward from the square root. The true target is balanced <em>but not adjacent</em>. And no picture should generate a real key: that needs vetted software and cryptographically secure randomness. The Rig teaches the shape of strength; it is not a tool for forging it.
+  </div>
+</section>
+
+<svg class="kinkrule" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true">
+  <title>The prime rule</title>
+  <path d="M0,17 L12.9,17 L16.9,7 L20.9,27 L23.9,17 L38.3,17 L42.3,7 L46.3,27 L49.3,17 L55.2,17 L59.2,27 L63.2,7 L66.2,17 L89.0,17 L93.0,7 L97.0,27 L100.0,17 L105.9,17 L109.9,27 L113.9,7 L116.9,17 L139.7,17 L143.7,7 L147.7,27 L150.7,17 L156.6,17 L160.6,27 L164.6,7 L167.6,17 L190.4,17 L194.4,7 L198.4,27 L201.4,17 L241.1,17 L245.1,27 L249.1,7 L252.1,17 L258.0,17 L262.0,7 L266.0,27 L269.0,17 L308.7,17 L312.7,27 L316.7,7 L319.7,17 L342.5,17 L346.5,7 L350.5,27 L353.5,17 L359.4,17 L363.4,27 L367.4,7 L370.4,17 L393.2,17 L397.2,7 L401.2,27 L404.2,17 L443.9,17 L447.9,27 L451.9,7 L454.9,17 L494.6,17 L498.6,7 L502.6,27 L505.6,17 L511.5,17 L515.5,27 L519.5,7 L522.5,17 L562.2,17 L566.2,7 L570.2,27 L573.2,17 L600,17"/>
+</svg>
+
+<section>
+  <div class="wrap">
+    <p class="section-no">III — THE HINGE</p>
+    <h2>Where the Rig is really a lock</h2>
+    <p>Here is the one place the Rig stops being only a picture and touches a real, deployed cryptosystem. Take the triangle's two legs — two primes <em>p</em> and <em>q</em> — and form the area, the public number <code>N = p·q</code>. Square any number and wrap it around <code>N</code> — the map <code>x² mod N</code> — and you have the Rabin function, a genuine one-way lock whose hardness is <em>provably</em> equal to factoring.</p>
+    <p>And the Rig's parts map onto it exactly. The four-fold symmetry of the bloom is the four square roots the lock always has. And the <strong>hinge</strong> — the move that pins one vertex and stands the flattened triangle back up — is the trapdoor: given two of those roots, a single greatest-common-divisor splits <code>N</code> back into <em>p</em> and <em>q</em>. The hinge that un-flattens the triangle <em>is</em> the secret that un-multiplies the number. Same move, two languages.</p>
+    <blockquote><p>The Rig builds the key, the squaring is the lock, and the hinge is the trapdoor — the move that stands the flat thing up, available only to whoever kept the two legs.</p></blockquote>
+    <p>So the whole machine is one honest picture of a real system: choosing two balanced primes is key generation (that is the scan); flattening them into one public number is the modulus; squaring mod that number is the lock; and the hinge — swing one leg into a circle and back — is the private trapdoor. The secret was never the number. It was always the two legs, and the hinge that remembers them.</p>
+  </div>
+</section>
+
+<svg class="kinkrule" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true">
+  <title>The prime rule</title>
+  <path d="M0,17 L21.4,17 L25.4,7 L29.4,27 L32.4,17 L38.3,17 L42.3,27 L46.3,7 L49.3,17 L55.2,17 L59.2,7 L63.2,27 L66.2,17 L89.0,17 L93.0,27 L97.0,7 L100.0,17 L105.9,17 L109.9,7 L113.9,27 L116.9,17 L139.7,17 L143.7,27 L147.7,7 L150.7,17 L156.6,17 L160.6,7 L164.6,27 L167.6,17 L190.4,17 L194.4,27 L198.4,7 L201.4,17 L241.1,17 L245.1,7 L249.1,27 L252.1,17 L258.0,17 L262.0,27 L266.0,7 L269.0,17 L308.7,17 L312.7,7 L316.7,27 L319.7,17 L342.5,17 L346.5,27 L350.5,7 L353.5,17 L359.4,17 L363.4,7 L367.4,27 L370.4,17 L393.2,17 L397.2,27 L401.2,7 L404.2,17 L443.9,17 L447.9,7 L451.9,27 L454.9,17 L494.6,17 L498.6,27 L502.6,7 L505.6,17 L511.5,17 L515.5,7 L519.5,27 L522.5,17 L562.2,17 L566.2,27 L570.2,7 L573.2,17 L600,17"/>
+</svg>
+
+<section>
+  <div class="wrap">
+    <p class="section-no">IV — THE LEAP</p>
+    <h2>A prime is a leap, not a place</h2>
+    <p>One last way of seeing, and it is the strangest. To <em>travel</em> from one prime to the next you would have to cross the continuum between them — and between any two points there are infinitely many more. Taken literally, the rocket never arrives; this is Zeno's old trap. So the Rig does not travel. It <em>leaps</em>. Each prime is not a place the rocket crawls to but the <em>amplitude</em> of an instant jump — a kick of that size, a measure of resistance cleared in no time at all.</p>
+    <p>You measure the toll, not the road. The road between primes is infinite; the toll — the gap, the resistance — is finite, and that is what you pay. The rocket tunnels: it appears at the next prime without ever crossing the distance, the way a struck bell does not travel to its note but simply rings. The motion between the ticks is not lost. It never existed. There were only the kicks.</p>
+    <p>And because each Rig, flattened, takes up no depth, you can stand infinitely many of them side by side — a deck of flat states, every semiprime, every setting, every moment of the climb, laid out at once and read across in a single glance. The same flatness that makes the wall strong leaves the third dimension free to compare. You do not move through the states. You lay them down, and look.</p>
+    <blockquote><p>You measure the toll, not the road. The road is infinite; the toll is finite — and the leap is free.</p></blockquote>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    The Rig — a way to see factoring. An art &amp; intuition project, honest about where it touches real cryptography and where it is only a beautiful way to think.<br><br>
+    Jonathan Kendall — San Diego · <a href="https://rsacrack.com">rsacrack.com</a> · <a href="https://github.com/onojk">github.com/onojk</a><br>
+    More to come — the Rig will grow.
+  </div>
+</footer>
+
+<script>
+// ---------- shared ----------
+function isP(n){if(n<2)return false;for(let d=2;d*d<=n;d++)if(n%d===0)return false;return true;}
+const PRIMES=[];for(let n=2;PRIMES.length<200;n++)if(isP(n))PRIMES.push(n);
+function easeu(u){return u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;}
+function lerp(a,b,u){return a+(b-a)*u;}
+
+// ---------- FLOWER (two-rate breathing rig) ----------
+(function(){
+  const cv=document.getElementById('flower'), ctx=cv.getContext('2d'), hud=document.getElementById('flowerHud');
+  const cx0=200, cy0=400; let bi=0,hi=0,t=0,playing=true,rb=1,rh=1; const beat=44;
+  function frame(){
+    ctx.clearRect(0,0,600,560);
+    const u=easeu(Math.min(1,t/beat));
+    const bp=PRIMES[bi],bn=PRIMES[Math.min(bi+rb,PRIMES.length-1)];
+    const hp=PRIMES[hi],hn=PRIMES[Math.min(hi+rh,PRIMES.length-1)];
+    const p=lerp(bp,bn,u),q=lerp(hp,hn,u),hyp=Math.hypot(p,q);
+    const span=Math.max(p,q,hyp), s=Math.min(11,230/span);
+    const O=[cx0,cy0],B=[cx0+p*s,cy0],H=[cx0,cy0-q*s];
+    ctx.strokeStyle='#e7e1d2';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(cx0-180,cy0);ctx.lineTo(cx0+340,cy0);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx0,cy0+60);ctx.lineTo(cx0,cy0-360);ctx.stroke();
+    function circle(c,r,col,w,a){ctx.beginPath();ctx.arc(c[0],c[1],r*s,0,7);ctx.strokeStyle=col;ctx.globalAlpha=a;ctx.lineWidth=w;ctx.stroke();ctx.globalAlpha=1;}
+    circle(O,p,'#2f5d63',1.4,.55);circle(B,p,'#2f5d63',1.4,.30);
+    circle(O,q,'#7a8b2f',1.4,.55);circle(H,q,'#7a8b2f',1.4,.30);
+    circle(B,hyp,'#b2401f',1.6,.7);circle(H,hyp,'#b2401f',1.6,.38);
+    ctx.beginPath();ctx.moveTo(O[0],O[1]);ctx.lineTo(B[0],B[1]);ctx.lineTo(H[0],H[1]);ctx.closePath();
+    ctx.fillStyle='rgba(178,64,31,0.10)';ctx.fill();ctx.strokeStyle='#1a1814';ctx.lineWidth=2;ctx.stroke();
+    for(const[v,c] of [[O,'#1a1814'],[B,'#2f5d63'],[H,'#b2401f']]){ctx.beginPath();ctx.arc(v[0],v[1],4,0,7);ctx.fillStyle=c;ctx.fill();}
+    const sh=Math.abs(p-q)<0.6?'balanced':(q>p?'sheared up':'sheared out');
+    hud.innerHTML='base p = <b>'+bp+'</b> &nbsp; height q = <b>'+hp+'</b><br>ratio q/p = <b>'+(q/p).toFixed(2)+'</b><br>'+sh;
+    if(playing){t++;if(t>=beat){t=0;bi+=rb;hi+=rh;if(bi>=PRIMES.length-rb-1||hi>=PRIMES.length-rh-1){bi=0;hi=0;}}}
+    requestAnimationFrame(frame);
+  }
+  document.getElementById('flowerPlay').onclick=function(){playing=!playing;this.textContent=playing?'pause':'play';};
+  document.getElementById('flowerReset').onclick=()=>{bi=0;hi=0;t=0;};
+  document.getElementById('rb').onchange=function(){rb=+this.value;bi=0;hi=0;t=0;};
+  document.getElementById('rh').onchange=function(){rh=+this.value;bi=0;hi=0;t=0;};
+  frame();
+})();
+
+// ---------- SCANNER (semiprime pairs) ----------
+(function(){
+  const pset=new Set(PRIMES);
+  const SEMIS=[];
+  for(let N=4;N<400 && SEMIS.length<90;N++){
+    for(const p of PRIMES){ if(p*p>N)break; if(N%p===0 && pset.has(N/p)){ SEMIS.push({N:N,p:p,q:N/p,gap:N/p-p,strong:(N/p-p)<=2}); break; } }
+  }
+  const cv=document.getElementById('scanner'), ctx=cv.getContext('2d'), hud=document.getElementById('scanHud');
+  const cx0=300, cy0=350; let i=0,t=0,playing=true,hold=true;
+  function beatFor(s){return (hold&&s.strong)?90:38;}
+  function draw(s,prev,u){
+    ctx.clearRect(0,0,600,520);
+    const p=lerp(prev.p,s.p,u),q=lerp(prev.q,s.q,u),hyp=Math.hypot(p,q);
+    const span=Math.max(p,q,hyp), sc=Math.min(13,140/span);
+    const O=[cx0-p*sc/2,cy0+q*sc/2],B=[cx0+p*sc/2,cy0+q*sc/2],H=[cx0-p*sc/2,cy0-q*sc/2];
+    ctx.strokeStyle='#e7e1d2';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(40,cy0+q*sc/2);ctx.lineTo(560,cy0+q*sc/2);ctx.stroke();
+    function circle(c,r,col,w,a){ctx.beginPath();ctx.arc(c[0],c[1],r*sc,0,7);ctx.strokeStyle=col;ctx.globalAlpha=a;ctx.lineWidth=w;ctx.stroke();ctx.globalAlpha=1;}
+    circle(O,p,'#2f5d63',1.4,.5);circle(B,p,'#2f5d63',1.4,.28);
+    circle(O,q,'#7a8b2f',1.4,.5);circle(H,q,'#7a8b2f',1.4,.28);
+    circle(B,hyp,'#b2401f',1.6,.65);circle(H,hyp,'#b2401f',1.6,.32);
+    ctx.beginPath();ctx.moveTo(O[0],O[1]);ctx.lineTo(B[0],B[1]);ctx.lineTo(H[0],H[1]);ctx.closePath();
+    const bal=Math.abs(p-q)/Math.max(p,q)<0.18;
+    ctx.fillStyle=bal?'rgba(178,64,31,0.20)':'rgba(120,130,60,0.10)';ctx.fill();
+    ctx.strokeStyle='#1a1814';ctx.lineWidth=2;ctx.stroke();
+    for(const[v,c] of [[O,'#1a1814'],[B,'#2f5d63'],[H,'#b2401f']]){ctx.beginPath();ctx.arc(v[0],v[1],4,0,7);ctx.fillStyle=c;ctx.fill();}
+    const tag=s.strong?'<span class="tag s">balanced · strong</span>':'<span class="tag w">lopsided · easy</span>';
+    hud.innerHTML='N = <b>'+s.N+'</b> = '+s.p+' × '+s.q+'<br>gap '+s.gap+' &nbsp; ratio '+(s.q/s.p).toFixed(2)+'<br>'+tag;
+  }
+  function frame(){
+    const s=SEMIS[i], prev=SEMIS[(i-1+SEMIS.length)%SEMIS.length], beat=beatFor(s);
+    draw(s,prev,easeu(Math.min(1,t/beat)));
+    if(playing){t++;if(t>=beat){t=0;i=(i+1)%SEMIS.length;}}
+    requestAnimationFrame(frame);
+  }
+  document.getElementById('scanPlay').onclick=function(){playing=!playing;this.textContent=playing?'pause':'play';};
+  document.getElementById('scanReset').onclick=()=>{i=0;t=0;};
+  document.getElementById('scanStep').onclick=()=>{playing=false;document.getElementById('scanPlay').textContent='play';i=(i+1)%SEMIS.length;t=0;};
+  document.getElementById('scanHold').onchange=function(){hold=this.checked;};
+  frame();
+})();
+</script>
+</body>
+</html>
