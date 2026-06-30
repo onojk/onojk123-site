@@ -200,7 +200,55 @@
 
 <section>
   <div class="wrap">
-    <p class="section-no">IV — THE LEAP</p>
+    <p class="section-no">IV — THE SHADOW</p>
+    <h2>The leg you can see but never stand on</h2>
+    <p>Stand the Rig a different way: let <code>N</code> be the long side — the hypotenuse — and swing the angle until one leg falls exactly on a true factor <em>p</em>. You <em>can</em> do it; the leg lands clean on a whole prime. But the moment it does, the other leg is forced to become <strong>p·q̆</strong>, where <strong>q̆ = √(q²−1)</strong> — an irrational that falls just short of the second prime <em>q</em> and never reaches it.</p>
+    <p>It earns its own mark. Write it <strong>q̆</strong> — <em>q with a breve</em>, the symbol for <em>short</em> — because that is exactly what it is: the prime <em>q</em>, shortened. It can never be a whole number, because <strong>q̆² = q² − 1</strong>, and no two perfect squares differ by one except zero and one. So the Rig can <em>see</em> the second prime — it sits right there in the figure — but can never stand a leg on it. One factor caught; the other only shadowed, held at the breadth of a breve.</p>
+    <p>The triangle still closes on <code>N</code> exactly, by a clean cancellation: <strong>(p·q̆)² + p² = N²</strong>. The minus-one buried inside q̆ and the small leg p² undo each other perfectly — that cancellation <em>is</em> the triangle closing. The price of standing on one prime is a shortfall of exactly p² in the other leg: the integer you gain on one side is the irrationality you owe on the other, and they balance to N² every time.</p>
+
+    <h2 style="margin-top:2.6rem">The whole secret, in N alone</h2>
+    <p>Now take away the factors and keep only what anyone is given — the number <code>N</code> itself. The triangle stops being a single shape. The one rule you can still write is <strong>a² + b² = N²</strong>, and <em>every</em> angle satisfies it: each θ gives a legal right triangle with legs <strong>a = N·cosθ</strong> and <strong>b = N·sinθ</strong>. In terms of N alone, the triangle is not a triangle at all. It is a <em>circle</em> — a quarter-circle of radius N, every point on it a different possible split.</p>
+
+    <figure class="full">
+      <div class="stage">
+        <svg id="circleN" viewBox="0 0 560 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A quarter circle of radius N; the hypotenuse swings as a radius; factors hide at the angles where a leg divides N">
+          <line x1="70" y1="470" x2="510" y2="470" stroke="#cbbf9f" stroke-width="1.5"/>
+          <line x1="70" y1="470" x2="70" y2="50" stroke="#cbbf9f" stroke-width="1.5"/>
+          <text x="496" y="492" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7d776c">leg a</text>
+          <text x="40" y="56" font-family="IBM Plex Mono,monospace" font-size="12" fill="#7d776c">leg b</text>
+          <path d="M 450,470 A 380,380 0 0,0 70,90" fill="none" stroke="#b2401f" stroke-width="2.5"/>
+          <text x="360" y="180" font-family="Fraunces,serif" font-size="22" font-weight="500" fill="#b2401f" transform="rotate(-38 360 180)">radius = N</text>
+          <line x1="70" y1="470" x2="338.7" y2="201.3" stroke="#7d776c" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="250" y="300" font-family="IBM Plex Mono,monospace" font-size="11" fill="#7d776c" transform="rotate(-45 250 300)">45° · balance (a=b)</text>
+          <g id="cnDots"></g>
+          <line id="cnRadius" x1="70" y1="470" x2="450" y2="470" stroke="#2f5d63" stroke-width="2.5"/>
+          <line id="cnLegA" x1="70" y1="470" x2="450" y2="470" stroke="#7a8b2f" stroke-width="3" opacity="0.9"/>
+          <line id="cnLegB" x1="450" y1="470" x2="450" y2="470" stroke="#7a8b2f" stroke-width="3" opacity="0.9"/>
+          <circle id="cnTip" cx="450" cy="470" r="5" fill="#2f5d63"/>
+          <g id="cnFactors"></g>
+          <text x="78" y="455" font-family="Fraunces,serif" font-size="18" font-weight="500" fill="#1a1814">O</text>
+        </svg>
+        <div class="controls">
+          <button id="cnPlay">pause</button>
+          <button id="cnReset">reset</button>
+        </div>
+      </div>
+      <figcaption>N = 15, in terms of N alone. The hypotenuse is a radius of length N, free to swing through every angle — each a legal triangle. The <strong style="color:#b2401f">red dots</strong> are the secret factor-angles, where a leg lands exactly on a divisor of N. The circle is public; the angle is not.</figcaption>
+    </figure>
+
+    <p>The factorization is one angle on that circle — the rare θ where a leg falls exactly on a divisor of N (the red dots). But nothing about the circle points to them. To find them you must swing, and test, angle by angle. <strong>N gives you the circle. It withholds the angle.</strong> That missing angle, on a circle anyone can draw, is the whole of the wall — and q̆ is the shadow every other angle casts, the second prime shortened, present in the figure and absent from the integers.</p>
+    <blockquote><p>N hands you the circle and keeps the angle. The factors are there — one caught, one shadowed — but the turn that finds them is the secret.</p></blockquote>
+  </div>
+</section>
+
+<svg class="kinkrule" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true">
+  <title>The prime rule</title>
+  <path d="M0,17 L12.9,17 L16.9,7 L20.9,27 L23.9,17 L38.3,17 L42.3,7 L46.3,27 L49.3,17 L55.2,17 L59.2,27 L63.2,7 L66.2,17 L89.0,17 L93.0,7 L97.0,27 L100.0,17 L105.9,17 L109.9,27 L113.9,7 L116.9,17 L139.7,17 L143.7,7 L147.7,27 L150.7,17 L156.6,17 L160.6,27 L164.6,7 L167.6,17 L190.4,17 L194.4,7 L198.4,27 L201.4,17 L241.1,17 L245.1,27 L249.1,7 L252.1,17 L258.0,17 L262.0,7 L266.0,27 L269.0,17 L308.7,17 L312.7,27 L316.7,7 L319.7,17 L342.5,17 L346.5,7 L350.5,27 L353.5,17 L359.4,17 L363.4,27 L367.4,7 L370.4,17 L393.2,17 L397.2,7 L401.2,27 L404.2,17 L443.9,17 L447.9,27 L451.9,7 L454.9,17 L494.6,17 L498.6,7 L502.6,27 L505.6,17 L511.5,17 L515.5,27 L519.5,7 L522.5,17 L562.2,17 L566.2,7 L570.2,27 L573.2,17 L600,17"/>
+</svg>
+
+<section>
+  <div class="wrap">
+    <p class="section-no">V — THE LEAP</p>
     <h2>A prime is a leap, not a place</h2>
     <p>One last way of seeing, and it is the strangest. To <em>travel</em> from one prime to the next you would have to cross the continuum between them — and between any two points there are infinitely many more. Taken literally, the rocket never arrives; this is Zeno's old trap. So the Rig does not travel. It <em>leaps</em>. Each prime is not a place the rocket crawls to but the <em>amplitude</em> of an instant jump — a kick of that size, a measure of resistance cleared in no time at all.</p>
     <p>You measure the toll, not the road. The road between primes is infinite; the toll — the gap, the resistance — is finite, and that is what you pay. The rocket tunnels: it appears at the next prime without ever crossing the distance, the way a struck bell does not travel to its note but simply rings. The motion between the ticks is not lost. It never existed. There were only the kicks.</p>
@@ -298,6 +346,55 @@ function lerp(a,b,u){return a+(b-a)*u;}
   document.getElementById('scanReset').onclick=()=>{i=0;t=0;};
   document.getElementById('scanStep').onclick=()=>{playing=false;document.getElementById('scanPlay').textContent='play';i=(i+1)%SEMIS.length;t=0;};
   document.getElementById('scanHold').onchange=function(){hold=this.checked;};
+  frame();
+})();
+
+// ---------- TRIANGLE IN TERMS OF N (the circle of radius N) ----------
+(function(){
+  const N=15, OX=70, OY=470, R=380;
+  const svg=document.getElementById('circleN');
+  if(!svg) return;
+  let dotsHTML='';
+  for(let i=1;i<=44;i++){
+    const th=i/45*Math.PI/2;
+    const x=OX+R*Math.cos(th), y=OY-R*Math.sin(th);
+    dotsHTML+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="2" fill="#cbbf9f"/>';
+  }
+  document.getElementById('cnDots').innerHTML=dotsHTML;
+  const divs=[]; for(let d=1;d<N;d++) if(N%d===0) divs.push(d);
+  let facHTML=''; const factorAngles=[];
+  for(const a of divs){
+    const th=Math.acos(a/N);
+    const x=OX+a/N*R, y=OY-(Math.sqrt(N*N-a*a)/N)*R;
+    factorAngles.push(th);
+    facHTML+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="5.5" fill="#b2401f"/>';
+    facHTML+='<text x="'+(x+8).toFixed(1)+'" y="'+(y-6).toFixed(1)+'" font-family="IBM Plex Mono,monospace" font-size="11" fill="#b2401f">a='+a+'</text>';
+  }
+  for(const a of divs){
+    const y=OY-(a/N)*R, x=OX+(Math.sqrt(N*N-a*a)/N)*R;
+    facHTML+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="5.5" fill="#b2401f"/>';
+  }
+  document.getElementById('cnFactors').innerHTML=facHTML;
+  const radius=document.getElementById('cnRadius'), legA=document.getElementById('cnLegA'),
+        legB=document.getElementById('cnLegB'), tip=document.getElementById('cnTip');
+  let t=0, playing=true;
+  function frame(){
+    const th=(t/600)*Math.PI/2;
+    const tx=OX+R*Math.cos(th), ty=OY-R*Math.sin(th);
+    radius.setAttribute('x2',tx); radius.setAttribute('y2',ty);
+    legA.setAttribute('x2',tx); legA.setAttribute('y2',OY);
+    legB.setAttribute('x1',tx); legB.setAttribute('y1',OY);
+    legB.setAttribute('x2',tx); legB.setAttribute('y2',ty);
+    tip.setAttribute('cx',tx); tip.setAttribute('cy',ty);
+    let near=false;
+    for(const fa of factorAngles){ if(Math.abs(th-fa)<0.02) near=true; }
+    tip.setAttribute('fill', near?'#b2401f':'#2f5d63');
+    tip.setAttribute('r', near?'7':'5');
+    if(playing){ t=(t+1.2)%600; }
+    requestAnimationFrame(frame);
+  }
+  document.getElementById('cnPlay').onclick=function(){playing=!playing;this.textContent=playing?'pause':'play';};
+  document.getElementById('cnReset').onclick=()=>{t=0;};
   frame();
 })();
 </script>
