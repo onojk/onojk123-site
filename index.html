@@ -50,6 +50,15 @@
   strong{font-weight:500;color:var(--ink)}
   code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--paper-deep);
     padding:.05em .35em;border-radius:3px;color:var(--kink);}
+  .readnext{display:block;margin:2rem 0;padding:1.2rem 1.4rem;background:#fbf8f0;
+    border:1px solid var(--line);border-left:3px solid var(--kink);border-radius:8px;
+    text-decoration:none;color:var(--ink);transition:background .15s,border-color .15s;}
+  .readnext:hover{background:var(--paper-deep);border-left-color:var(--kink)}
+  .readnext .rn-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--kink);margin-bottom:.35rem}
+  .readnext .rn-title{font-family:"Fraunces",serif;font-weight:500;font-size:1.3rem;line-height:1.15;margin-bottom:.2rem}
+  .readnext .rn-sub{font-size:.98rem;color:var(--ink-soft);line-height:1.45}
+  .readnext .rn-go{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--turn);margin-top:.5rem;display:inline-block}
 
   blockquote{margin:2.6rem 0;padding:0 0 0 1.4rem;border-left:2px solid var(--kink);
     font-family:"Fraunces",serif;font-weight:400;font-size:1.5rem;line-height:1.32;color:var(--ink);}
@@ -113,6 +122,12 @@
   <div class="wrap">
     <p>This is not a proof and not a cipher. It is a <em>way of seeing</em>. Multiplying two numbers is easy; pulling them back apart — factoring — is hard, and that small asymmetry is the hinge the whole modern lock-and-key world hangs on. The Rig is a moving picture of that asymmetry. Two primes become the two legs of a triangle. The triangle is launched up the axes and grows. It blooms into circles. And somewhere in the growing and the blooming you can watch, with your eyes, why a number can carry a secret that even its owner can only open with a key they kept.</p>
     <p>Everything here is honest about what it is: a visualization. Where it touches real cryptography, it says so. Where it is only a beautiful way to think, it says that too.</p>
+    <a class="readnext" href="/zenochipper/">
+      <div class="rn-eyebrow">Read next · a short piece</div>
+      <div class="rn-title">Zeno's Woodchipper</div>
+      <div class="rn-sub">Two machines that look identical. One fills a bag and stops. The other, fed the primes, makes an infinite pile out of infinitely tiny chips — and never stops.</div>
+      <span class="rn-go">→ onojk123.com/zenochipper</span>
+    </a>
   </div>
 </section>
 
@@ -263,7 +278,7 @@
   <div class="wrap">
     The Rig — a way to see factoring. An art &amp; intuition project, honest about where it touches real cryptography and where it is only a beautiful way to think.<br><br>
     Jonathan Kendall — San Diego · <a href="https://rsacrack.com">rsacrack.com</a> · <a href="https://github.com/onojk">github.com/onojk</a><br>
-    <a href="/zenochipper/">Zeno’s Woodchipper</a> — the machine that never stops.<br><br>More to come — the Rig will grow.
+    More to come — the Rig will grow.
   </div>
 </footer>
 
