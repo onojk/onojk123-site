@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infinite Sharpness — onojk123</title>
+<meta name="description" content="1/p sharpens turning to a point that never lands. Dissolve that point and lay it back down chip by chip, and the same infinite fuel builds any shape at any amplitude — a circle is only the flat one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f2e9; --ink:#241f18; --soft:#6b5f4f; --faint:#8a7c64;
+    --rule:#d8cdb8; --kink:#b2401f; --kink-soft:#c56b48; --panel:#efe8da;
+    --blade:#241f18; --sheath:#b2401f; --pocket:#e7c9ba; --curve:#7a8b5a;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Spectral",Georgia,serif;font-size:19px;line-height:1.66;
+    font-feature-settings:"liga","onum";-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 28px;}
+  header.top{padding:76px 0 0;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--faint);text-align:center;margin:0 0 30px;}
+  h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(48px,10.5vw,88px);
+    line-height:.95;letter-spacing:-.015em;text-align:center;margin:0 0 4px;}
+  .dek{font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+    font-size:clamp(20px,3.4vw,25px);line-height:1.34;color:var(--soft);
+    text-align:center;max-width:35ch;margin:22px auto 0;}
+  .byline{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;
+    color:var(--faint);text-align:center;margin:40px 0 0;}
+  .byline a{color:var(--kink);text-decoration:none;border-bottom:1px solid var(--kink-soft);}
+  .rule-top{border:0;border-top:1px solid var(--rule);max-width:120px;margin:30px auto 0;}
+  main{padding:52px 0 0;}
+  p{margin:0 0 24px;} p.lead{margin-top:0;}
+  .dropcap::first-letter{font-family:"Fraunces",serif;font-weight:600;float:left;
+    font-size:78px;line-height:.72;padding:8px 12px 0 0;color:var(--kink);}
+  em{font-style:italic;} strong{font-weight:500;}
+  .mono{font-family:"IBM Plex Mono",monospace;font-size:.86em;}
+  h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(28px,5vw,38px);
+    line-height:1.06;letter-spacing:-.01em;margin:8px 0 20px;}
+  .sec-label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--kink);margin:0 0 2px;}
+  .numeral{font-family:"Fraunces",serif;font-weight:600;color:var(--kink);
+    font-size:46px;line-height:1;float:left;padding:2px 14px 0 0;}
+  .sec-head{overflow:hidden;margin:52px 0 22px;}
+  .sec-head .sec-label{margin-top:6px;}
+  figure{margin:44px 0;}
+  figcaption{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+    color:var(--faint);text-align:center;margin-top:14px;}
+  .card{border:1px solid var(--rule);border-radius:2px;background:rgba(255,255,255,.35);
+    padding:26px 28px;margin:40px 0;}
+  .card .kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--kink);margin:0 0 10px;}
+  .card h3{font-family:"Fraunces",serif;font-weight:600;font-size:24px;margin:0 0 8px;}
+  .card p{font-size:17px;color:var(--soft);margin:0 0 6px;}
+  .card .go{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--kink);margin-top:10px;}
+  .card .go a{color:var(--kink);text-decoration:none;}
+  .pull{font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+    font-size:clamp(22px,4vw,30px);line-height:1.24;color:var(--kink);
+    text-align:center;margin:46px auto;max-width:28ch;}
+  .zig{display:block;width:100%;height:34px;margin:52px 0;color:var(--kink);}
+  .fig-interactive{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
+    padding:22px 20px 20px;margin:44px 0;}
+  .fig-interactive svg{display:block;width:100%;height:auto;}
+  .controls{display:flex;align-items:center;gap:14px;margin:16px 2px 4px;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--soft);flex-wrap:wrap;}
+  .controls label{white-space:nowrap;letter-spacing:.02em;}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:3px;background:var(--rule);
+    border-radius:2px;flex:1 1 180px;min-width:140px;outline:none;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;
+    border-radius:50%;background:var(--kink);cursor:pointer;border:2px solid var(--paper);}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--kink);
+    cursor:pointer;border:2px solid var(--paper);}
+  .readout{display:flex;gap:24px;flex-wrap:wrap;margin:12px 2px 0;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--faint);}
+  .readout b{color:var(--ink);font-weight:500;}
+  .swatch{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:baseline;margin-right:5px;}
+  .seg{display:flex;gap:8px;flex-wrap:wrap;margin:16px 2px 4px;}
+  .seg button{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.03em;
+    color:var(--soft);background:transparent;border:1px solid var(--rule);border-radius:2px;
+    padding:6px 12px;cursor:pointer;transition:all .12s;}
+  .seg button:hover{border-color:var(--kink-soft);color:var(--kink);}
+  .seg button.on{background:var(--kink);color:var(--paper);border-color:var(--kink);}
+  footer{padding:70px 0 90px;text-align:center;}
+  footer .home{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.04em;color:var(--faint);}
+  footer .home a{color:var(--kink);text-decoration:none;border-bottom:1px solid var(--kink-soft);}
+  footer .sig{font-family:"Fraunces",serif;font-style:italic;color:var(--soft);margin-top:26px;font-size:18px;}
+  @media (max-width:560px){body{font-size:18px;}.wrap{padding:0 20px;}header.top{padding:54px 0 0;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">An Art &amp; Intuition Project · onojk123</p>
+    <h1>Infinite Sharpness</h1>
+    <p class="dek">A point that never lands is the densest deposit of turning there is. Dissolve it and lay it back down — the same infinite fuel builds any shape. A circle is only the flat one.</p>
+    <p class="byline">Jonathan Kendall · San Diego · a piece of <a href="/">The Rig</a></p>
+    <hr class="rule-top">
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <p class="lead dropcap">Divide one by a prime and the arithmetic never finishes. <span class="mono">1/2</span> lands on a last digit and stops. <span class="mono">1/p</span> does not — it repeats forever, cycling through a fixed block of digits like an arrow kicked sideways into orbit instead of down to the ground. That never-landing looks, at first, like a defect: a computation that won't resolve, a curve with no floor to strike. This essay argues the opposite. The never-landing is not a wall. It is a <em>fuel.</em> Followed down to its shape, the infinite sharpness of <span class="mono">1/p</span> turns out to be the richest raw material there is — a deposit of pure turning, dense enough that, dissolved and laid back down, it can build any shape at all. A circle is only the simplest thing you can make with it.</p>
+
+    <p>Everything here is honest about what it is. Where the geometry touches real arithmetic — the divergence of <span class="mono">&sum;1/p</span>, the never-terminating expansion — it says so. Where it is only a beautiful way to think, it says that too. The claim at the end is a claim about <em>seeing</em>, not a theorem: that once you know what infinite sharpness is <em>made of</em>, you stop wanting to get rid of it.</p>
+
+    <p class="pull">Sharpness is not a spike. It is turning, concentrated.</p>
+
+    <div class="sec-head">
+      <span class="numeral">I</span>
+      <p class="sec-label">&mdash; The deposit</p>
+      <h2>What infinite sharpness is made of</h2>
+    </div>
+
+    <p>There is a curve at the bottom of <span class="mono">1/p</span>, and it is a parabola &mdash; but a strange one. A parabola is the exact borderline between two fates. Bend it a hair one way and it closes into an ellipse: a bound orbit, a curve that returns. Bend it the other way and it opens into a hyperbola: an escape, gone. The parabola itself is the knife-edge &mdash; the one curve whose two arms aim at a single point infinitely far away and never quite reach it. It is a loop stretched until its closing point has receded past every finite distance.</p>
+
+    <p>And <span class="mono">1/p</span> is not a point on that curve. <strong>It is the curve's scale.</strong> A parabola has one shape and one dial &mdash; how wide it opens &mdash; and the reciprocal of the prime is that dial. The larger the prime, the more the curve stretches toward the true, never-returning arc; the loop of the repeating decimal, of length <span class="mono">p&minus;1</span>, opens wider and wider toward a return that has fled to infinity.</p>
+
+    <p>Now look at the tip, and look at it as a <em>quantity of turning.</em> Every curve, walked from end to end, turns through some total angle &mdash; that is what curvature measures, turning per unit length. On a parabola the turning is not spread evenly: it is thin along the arms and piles up at the vertex. Stretch the curve toward the infinite arc and the arms flatten toward straight lines that do almost no turning at all, while <em>every bit of the turning is crushed into the tip.</em> In the limit the vertex becomes a point of infinite curvature &mdash; a cusp, infinitely sharp &mdash; which is to say: <strong>the maximum possible amount of turning, packed into a single point.</strong></p>
+
+    <p>That is the whole reframing. Infinite sharpness is not a needle that pricks &mdash; it is a <em>reservoir.</em> The never-landing tip of <span class="mono">1/p</span> is the densest deposit of turning that can exist, because it is <em>all</em> the turning of an infinite curve, gathered into one place. A terminating number has a rounded vertex &mdash; a modest, finite deposit it rolls through and spends on the way to the ground. <span class="mono">1/p</span>'s tip cannot spend itself and land, because its return is at infinity; so the turning just accumulates, without limit, in the point. The sharpness is not the problem. The sharpness is the <em>ore.</em></p>
+
+    <div class="card">
+      <p class="kicker">The vein it runs in</p>
+      <h3>Between 1/n and 1/p</h3>
+      <p>How rich the deposit gets is set by how gently the pieces are allowed to shrink &mdash; an angle. Oresme's harmonic <span class="mono">&sum;1/n</span> is the steep edge; Euler's <span class="mono">&sum;1/p</span> the shallow one &mdash; the slowest crawl that still refuses to converge. Every rate between them keeps the tip infinitely sharp: an inexhaustible deposit. Below the floor the vertex rounds, the turning is finite, the arrow lands. The primes ride the shallow wall &mdash; the gentlest climb that still never lands, and so never stops accumulating.</p>
+      <p class="go">&rarr; <a href="/zenochipper">onojk123.com/zenochipper</a></p>
+    </div>
+
+    <div class="sec-head">
+      <span class="numeral">II</span>
+      <p class="sec-label">&mdash; Carrying it</p>
+      <h2>The sheath</h2>
+    </div>
+
+    <p>Before you can spend the deposit you have to be able to carry it, and an infinitely sharp thing cannot be handled &mdash; the curvature is not large, it is infinite, and it runs off the edge of every number. The instinct is to round the point off. But rounding <em>changes</em> the curve, and it hides a trade: a tighter cap has less excess but climbs back toward infinite sharpness; a fatter cap is blunter but swells in area. Rounding never destroys the infinity &mdash; it only slides it between sharpness and area. The reservoir is still full; you have just spilled some of it.</p>
+
+    <p>What you want is not to blunt the sword. What you want is a <em>sheath.</em> A scabbard does not sharpen or soften the blade &mdash; it covers it. Its tip is blunt, flat, closed, <em>finite,</em> precisely so it can contain a point that is sharp. Take a second parabola, offset outward by a width <span class="mono">w</span>, and end it not in a point but in a <strong>square, flat tip.</strong> Slide the blade in. The sharp curve rests inside, untouched; the infinite point never reaches the squared end of its scabbard.</p>
+
+    <p>Now the two quantities come apart cleanly. <strong>Sharpness goes to zero by construction:</strong> the sheath's tip is a flat segment, curvature exactly zero. Infinite in, zero out &mdash; not a limit, a flat set to zero by fiat. <strong>And the leftover is a finite pocket of area:</strong> the hollow of the scabbard, closed by the flat. Because the sheath <em>squares off</em> rather than rounds, that area does not blow up as you thin it &mdash; the square end, not the width, closes the tip. Nothing is spilled. The full deposit is inside, intact, and now you can pick it up: the un-handleable reservoir has become a finite object with a blunt end and a full core.</p>
+
+    <figure class="fig-interactive">
+      <svg id="sheathSvg" viewBox="0 0 640 340" aria-label="A sharp parabola blade inside a square-ended parabola sheath, with the finite pocket shaded between them."></svg>
+      <div class="controls">
+        <label for="wSlider">sheath width&nbsp;<span class="mono" id="wVal">28</span></label>
+        <input id="wSlider" type="range" min="6" max="70" value="28" step="1">
+      </div>
+      <div class="readout">
+        <span><span class="swatch" style="background:var(--blade)"></span>blade &mdash; tip <b>&infin; sharp</b></span>
+        <span><span class="swatch" style="background:var(--sheath)"></span>sheath &mdash; tip <b>0 sharp</b></span>
+        <span><span class="swatch" style="background:var(--pocket)"></span>pocket &mdash; area <b id="areaVal">&mdash;</b></span>
+      </div>
+      <figcaption>Drag the width. The blade's tip stays an infinite deposit no matter what; the square end always caps it flat at sharpness zero; the shaded pocket is the finite measure of the infinity you carried without spilling. The sword is still a sword &mdash; it just has a sheath.</figcaption>
+    </figure>
+
+    <div class="sec-head">
+      <span class="numeral">III</span>
+      <p class="sec-label">&mdash; Tapping it</p>
+      <h2>The double-edged sword, collapsed</h2>
+    </div>
+
+    <p>To spend the deposit you have to open it &mdash; and the blade is double-edged, which is how. Side <em>a</em> and side <em>b</em> are the two arms of the parabola, and the infinite sharpness is not a property of either edge; it is what happens <em>between</em> them, at the one point where the two sides converge into a merge. The reservoir is sealed inside that merge.</p>
+
+    <p>So collapse the two sides together. The instant you do, the apex <em>decouples</em>: the two edges no longer merge to a point, they <strong>cross</strong> &mdash; they pass through each other and swap sides, a criss-cross, an X where there was a needle. And a crossing is not a merge. At an X each strand runs perfectly straight through the middle; the infinite curvature that was sealed in the meeting is <em>released</em> the moment the meeting becomes a crossing. This is the tap. The turning that was locked in one infinite point is now free to flow.</p>
+
+    <p>Drop that X into the middle of a strip one unit tall &mdash; because that is what the "regular line" really is: not a hairline but a rectangle of height <span class="mono">1</span>, running to infinity. The width <span class="mono">w</span> is the <em>limit of flatness,</em> the residual <span class="mono">1</span> of height that survives even as the length runs to forever. The four angles of the X are related to the tip's angle &mdash; but <strong>they never quite collapse to zero.</strong> A crossing cannot have a zero-degree wedge; at zero the two lines stop crossing and merge back into one, and the reservoir seals shut again. So the X holds the sharpness <em>just above</em> zero &mdash; the valve open by the thinnest possible margin, the deposit tapped but never exhausted, because to exhaust it would be to close the valve. That margin &mdash; the angle held just off zero &mdash; is the same fact as <span class="mono">1/p</span> never landing. The tap never shuts.</p>
+
+    <div class="sec-head">
+      <span class="numeral">IV</span>
+      <p class="sec-label">&mdash; The engine</p>
+      <h2>A loop of precision, fed forever</h2>
+    </div>
+
+    <p>The four angles of the X add up to <span class="mono">360</span>. That is the engine, not a footnote. The crossing is a <em>closed budget of a full turn,</em> and a shape is nothing but <em>how that 360 of turning is spent around the loop.</em> The X spends it all at one crossing; a shape spends it in some pattern around the whole boundary. And the fuel that lets you move it &mdash; redistribute the turning from where it is to where you want it &mdash; is the deposit you just tapped, delivered in <strong>chips.</strong></p>
+
+    <p>To move a sliver of turning from the corner out onto an edge, you <em>add a chip</em> &mdash; one infinitesimal drawn from the reservoir and dissolved into the boundary at the spot you choose. And the chip is <em>vanishing:</em> its size runs to zero, but it is never actually zero. This is the never-landing doing work. Each added chip is another turn of the crank &mdash; disappearing as a <em>quantity</em> yet persisting as a <em>notch of turning</em> laid where you put it. You never run out, because the deposit is infinite and the valve never shuts; you can always add one more chip, even as it disappears.</p>
+
+    <p>That clause carries the whole engine: <em>even as the chip disappears.</em> A vanishing chip has no area, no weight, nothing you could measure &mdash; and it still moves the turning. You add a chip of size approaching zero and you get a real, non-zero increment of shape. The infinitesimal does work. And because the fuel never ends, the loop that lays the chips never ends: you don't <em>finish</em> a shape, you <em>maintain</em> it, an endless conveyor drawing chips from the never-landing tip and dissolving them into the boundary, forever, the pattern only ever getting finer.</p>
+
+    <p class="pull">You do not finish the shape. You feed it.</p>
+
+    <div class="sec-head">
+      <span class="numeral">V</span>
+      <p class="sec-label">&mdash; The flat one</p>
+      <h2>A circle is the even distribution</h2>
+    </div>
+
+    <p>Now the circle, which is the simplest thing the engine makes. A square and a circle hold the same total turning &mdash; a full <span class="mono">360</span> &mdash; and differ only in <em>how it is spent.</em> A square dumps the entire turn into four corners: all the turning at four sharp points, the flat edges between them turning not at all. A circle spends the same 360 <em>perfectly evenly</em> &mdash; every point turning by the same vanishing amount, no corners anywhere.</p>
+
+    <p>So to make a circle you <strong>flatten the distribution of the chips.</strong> You take the turning bunched at the four corners and you feed vanishing chips that carry it, a sliver at a time, out onto the flat edges &mdash; smoothing the pile into an even coat all the way around. Add one chip: a corner softens, a little of its turning leaks onto the side. Add another, and another &mdash; never reaching zero, never stopping &mdash; and the four corners round off, the edges pick up curvature, and in the limit the 360 that was piled in four corners lies spread evenly around the whole boundary. The square becomes a circle. And the circle is never <em>done</em> &mdash; it is the shape you get by laying an ever-finer even coat, forever, from a deposit that never empties.</p>
+
+    <p>It is the <em>never quite collapsing to zero</em> that makes it possible. If the corner-angles could hit zero, the figure would degenerate, not round. Because they are held just off zero &mdash; the valve open by a hair &mdash; each corner stays a real angle that can be <em>shaved,</em> spread, softened, chip by chip, without ever vanishing. The corners do not disappear. They <em>distribute.</em></p>
+
+    <figure class="fig-interactive">
+      <svg id="circSvg" viewBox="0 0 640 320" aria-label="A square rounding into a circle as chips are added."></svg>
+      <div class="controls">
+        <label for="cSlider">chips added&nbsp;<span class="mono" id="cVal">0</span></label>
+        <input id="cSlider" type="range" min="0" max="100" value="0" step="1">
+      </div>
+      <div class="readout">
+        <span>turning at the corners <b id="cornerVal">100%</b></span>
+        <span>spread along the curve <b id="spreadVal">0%</b></span>
+        <span>total turn <b>360&deg; &mdash; conserved</b></span>
+      </div>
+      <figcaption>Add chips. The total turning is always 360&deg; &mdash; the slider only moves it from the four sharp corners out onto the curve. At zero chips it is all corner: a square. Fed forever, the corners bloom into the even turning of a circle. The chips disappear; the roundness they buy stays.</figcaption>
+    </figure>
+
+    <div class="sec-head">
+      <span class="numeral">VI</span>
+      <p class="sec-label">&mdash; The fuel</p>
+      <h2>Any shape, at any amplitude</h2>
+    </div>
+
+    <p>Here is the summit, and it is why the circle was only a beginning. If a circle is <em>one</em> distribution of the chips &mdash; the flat, even one &mdash; then <strong>every other distribution is another shape.</strong> Flatten the chips evenly and you get a circle. Pile them at four points, a square. At three, a triangle. Pour them in a slow swell and a sharp return, a teardrop. Lay them down as a sine, a wave; as two beating rhythms, a Lissajous; as the digits of <span class="mono">1/p</span> itself, the fingerprint. The shape <em>is</em> the distribution of the turning around the loop. You are not building different shapes out of different materials &mdash; you are building <em>every</em> shape out of the <em>same</em> material, vanishing chips of turning, laid down in different densities.</p>
+
+    <p>And this is what "any shape at any amplitude" means, exactly and without exaggeration. <strong>Amplitude</strong> is how <em>many</em> chips you pour into a given stretch of the loop &mdash; pour more and the boundary bulges out, fewer and it draws in. <strong>Shape</strong> is the <em>pattern</em> of that pouring around the full turn. The infinite supply gives you unbounded amplitude &mdash; there is no bulge you cannot reach, because you can always pour more. The vanishing size gives you unbounded resolution &mdash; there is no detail too fine, because the chips go to zero. Between infinite fuel and vanishing grain, you can lay down <em>any</em> boundary: any closed curve is some distribution of 360&deg; of turning around a loop, and you hold an engine that lays turning down, chip by chip, in any density, forever.</p>
+
+    <figure class="fig-interactive">
+      <svg id="shapeSvg" viewBox="0 0 640 340" aria-label="One budget of turning redistributed into different shapes."></svg>
+      <div class="seg" id="shapeSeg">
+        <button data-shape="circle" class="on">circle &middot; even</button>
+        <button data-shape="square">square &middot; 4 corners</button>
+        <button data-shape="triangle">triangle &middot; 3</button>
+        <button data-shape="teardrop">teardrop</button>
+        <button data-shape="wave">wave</button>
+      </div>
+      <div class="controls">
+        <label for="aSlider">amplitude&nbsp;<span class="mono" id="aVal">1.0</span></label>
+        <input id="aSlider" type="range" min="40" max="150" value="100" step="1">
+      </div>
+      <div class="readout">
+        <span>same fuel <b>&mdash; vanishing chips</b></span>
+        <span>same budget <b>&mdash; 360&deg; of turning</b></span>
+        <span>different <b>distribution</b></span>
+      </div>
+      <figcaption>One reservoir, one budget of turning, poured in different patterns. Switch the distribution to switch the shape; drag amplitude to pour more or fewer chips into the same pattern. Nothing changes but where the chips go &mdash; the fuel and the total turn are always the same.</figcaption>
+    </figure>
+
+    <p>So the never-landing of <span class="mono">1/p</span> was never the obstacle. It was the engine. Building shapes needs exactly two things, and the prime hands you both for free: a <strong>loop that never closes</strong>, so the conveyor can run forever, and a <strong>source of infinitely concentrated turning</strong>, so the fuel never runs out. The never-closing loop <em>is</em> the endless conveyor. The infinitely sharp tip <em>is</em> the inexhaustible reservoir. You do not overcome the never-landing to make shapes. The never-landing is what makes every shape possible.</p>
+
+    <p class="pull">Infinite sharpness is not a wall. It is the fuel.</p>
+
+    <p>That is the promise The Rig opens with &mdash; <em>a triangle of two primes, launched up the axes, blooming into circles.</em> The blooming was this: the cornered, prime-built figure fed by chips that never land, its turning redistributed into the round &mdash; and past the round, into anything. The infinite sharpness of <span class="mono">1/p</span> is the densest deposit of turning there is, sheathed so you can carry it, tapped so it can flow, and fed through a loop that never closes into whatever shape you spend it on. A circle is the flat distribution. The rest of the shapes are waiting in the same fuel.</p>
+
+    <svg class="zig" viewBox="0 0 720 34" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 17 L40 9 L64 25 L104 9 L128 25 L168 12 L200 22 L240 9 L272 25 L312 12 L344 22 L384 9 L420 25 L460 12 L496 22 L536 9 L568 25 L608 12 L644 22 L684 9 L720 17"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+
+    <div class="card">
+      <p class="kicker">Read next &middot; the companion</p>
+      <h3>Zeno's Woodchipper</h3>
+      <p>Two machines that look identical. One fills a bag and stops. The other, fed the primes, makes an infinite pile out of infinitely tiny chips &mdash; and never stops. Where the fuel in this essay comes from.</p>
+      <p class="go">&rarr; <a href="/zenochipper">onojk123.com/zenochipper</a></p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="home">&larr; <a href="/">back to The Rig</a></p>
+    <p class="sig">A way of seeing, honest about what it is.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var SVGNS="http://www.w3.org/2000/svg";
+  function el(n,a){var e=document.createElementNS(SVGNS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+
+  (function(){
+    var svg=document.getElementById('sheathSvg');
+    var slider=document.getElementById('wSlider');
+    var wVal=document.getElementById('wVal'), areaVal=document.getElementById('areaVal');
+    var cx=320, topY=64, botY=300, k=150;
+    function bladePath(){
+      var N=60,d="M "+cx+" "+topY,i,t,y,dx,right=[],left=[];
+      for(i=0;i<=N;i++){t=i/N;y=topY+t*(botY-topY);dx=k*Math.sqrt(t);right.push([cx+dx,y]);left.push([cx-dx,y]);}
+      for(i=0;i<=N;i++)d+=" L "+right[i][0].toFixed(2)+" "+right[i][1].toFixed(2);
+      for(i=N;i>=0;i--)d+=" L "+left[i][0].toFixed(2)+" "+left[i][1].toFixed(2);
+      return d+" Z";
+    }
+    function sheathPath(w){
+      var N=60,i,t,y,dx,right=[],left=[],flatTopY=topY-w*0.55,hf=w;
+      for(i=0;i<=N;i++){t=i/N;y=topY+t*(botY-topY);dx=k*Math.sqrt(t)+w;right.push([cx+dx,y]);left.push([cx-dx,y]);}
+      var d="M "+(cx-hf).toFixed(2)+" "+flatTopY.toFixed(2);
+      d+=" L "+(cx+hf).toFixed(2)+" "+flatTopY.toFixed(2);
+      for(i=0;i<=N;i++)d+=" L "+right[i][0].toFixed(2)+" "+right[i][1].toFixed(2);
+      for(i=N;i>=0;i--)d+=" L "+left[i][0].toFixed(2)+" "+left[i][1].toFixed(2);
+      return d+" Z";
+    }
+    function draw(w){
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      svg.appendChild(el('path',{d:sheathPath(w)+" "+bladePath(),fill:'var(--pocket)','fill-rule':'evenodd',opacity:'0.9'}));
+      svg.appendChild(el('path',{d:sheathPath(w),fill:'none',stroke:'var(--sheath)','stroke-width':'2.5','stroke-linejoin':'miter'}));
+      svg.appendChild(el('path',{d:bladePath(),fill:'var(--blade)'}));
+      svg.appendChild(el('circle',{cx:cx,cy:topY,r:'2.5',fill:'var(--blade)'}));
+      var lb=el('text',{x:cx+12,y:topY+3,'font-family':'IBM Plex Mono, monospace','font-size':'12',fill:'var(--soft)'});lb.textContent='infinite deposit';svg.appendChild(lb);
+      var ft=topY-w*0.55;
+      var ls=el('text',{x:cx+w+8,y:ft-4,'font-family':'IBM Plex Mono, monospace','font-size':'12',fill:'var(--sheath)'});ls.textContent='square end \u00b7 0';svg.appendChild(ls);
+      var area=(w*(k*0.9)+w*w*1.15)/100;
+      areaVal.textContent=area.toFixed(1); wVal.textContent=w;
+    }
+    slider.addEventListener('input',function(){draw(parseInt(slider.value,10));});
+    draw(parseInt(slider.value,10));
+  })();
+
+  (function(){
+    var svg=document.getElementById('circSvg');
+    var slider=document.getElementById('cSlider');
+    var cVal=document.getElementById('cVal'), cornerVal=document.getElementById('cornerVal'), spreadVal=document.getElementById('spreadVal');
+    var cx=320, cy=160, R=118;
+    function superellipse(n){
+      var N=240,d="",i,t,c,s,x,y;
+      for(i=0;i<=N;i++){
+        t=2*Math.PI*i/N; c=Math.cos(t); s=Math.sin(t);
+        x=cx+R*Math.sign(c)*Math.pow(Math.abs(c),2/n);
+        y=cy+R*Math.sign(s)*Math.pow(Math.abs(s),2/n);
+        d+=(i===0?"M ":" L ")+x.toFixed(2)+" "+y.toFixed(2);
+      }
+      return d+" Z";
+    }
+    function draw(chips){
+      var frac=chips/100, n=12-frac*10;
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      svg.appendChild(el('path',{d:superellipse(12),fill:'none',stroke:'var(--rule)','stroke-width':'1','stroke-dasharray':'4 4'}));
+      svg.appendChild(el('path',{d:superellipse(n),fill:'none',stroke:'var(--curve)','stroke-width':'2.6','stroke-linejoin':'round'}));
+      var pts=[[1,1],[-1,1],[-1,-1],[1,-1]], i, cornerSharp=Math.max(0,1-frac);
+      for(i=0;i<4;i++){
+        var c=Math.SQRT1_2*pts[i][0], s=Math.SQRT1_2*pts[i][1];
+        var x=cx+R*Math.sign(c)*Math.pow(Math.abs(c),2/n);
+        var y=cy+R*Math.sign(s)*Math.pow(Math.abs(s),2/n);
+        svg.appendChild(el('circle',{cx:x.toFixed(2),cy:y.toFixed(2),r:(2+3*cornerSharp).toFixed(2),
+          fill:'var(--kink)',opacity:(0.35+0.55*cornerSharp).toFixed(2)}));
+      }
+      cVal.textContent=chips;
+      var cp=Math.round(cornerSharp*100);
+      cornerVal.textContent=cp+'%'; spreadVal.textContent=(100-cp)+'%';
+    }
+    slider.addEventListener('input',function(){draw(parseInt(slider.value,10));});
+    draw(parseInt(slider.value,10));
+  })();
+
+  (function(){
+    var svg=document.getElementById('shapeSvg');
+    var seg=document.getElementById('shapeSeg');
+    var aSlider=document.getElementById('aSlider'), aVal=document.getElementById('aVal');
+    var cx=320, cy=170, baseR=110, shape='circle';
+    function radius(shape,t){
+      switch(shape){
+        case 'circle': return 1;
+        case 'square': { var c=Math.abs(Math.cos(t)),s=Math.abs(Math.sin(t));
+          return 1/Math.pow(Math.pow(c,8)+Math.pow(s,8),1/8); }
+        case 'triangle': { return 1/(0.86+0.16*Math.cos(3*t-Math.PI/2)); }
+        case 'teardrop': { return (1-0.55*Math.cos(t))/1.2; }
+        case 'wave': { return 1+0.18*Math.sin(6*t); }
+      }
+      return 1;
+    }
+    function path(shape,amp){
+      var N=360,d="",i,t,r,x,y;
+      for(i=0;i<=N;i++){
+        t=2*Math.PI*i/N; r=baseR*amp*radius(shape,t);
+        x=cx+r*Math.cos(t); y=cy+r*Math.sin(t);
+        d+=(i===0?"M ":" L ")+x.toFixed(2)+" "+y.toFixed(2);
+      }
+      return d+" Z";
+    }
+    function draw(){
+      var amp=parseInt(aSlider.value,10)/100;
+      aVal.textContent=amp.toFixed(2);
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      svg.appendChild(el('circle',{cx:cx,cy:cy,r:(baseR*amp).toFixed(1),fill:'none',stroke:'var(--rule)','stroke-width':'1','stroke-dasharray':'4 4'}));
+      svg.appendChild(el('path',{d:path(shape,amp),fill:'none',stroke:'var(--curve)','stroke-width':'2.6','stroke-linejoin':'round','stroke-linecap':'round'}));
+    }
+    Array.prototype.forEach.call(seg.querySelectorAll('button'),function(b){
+      b.addEventListener('click',function(){
+        Array.prototype.forEach.call(seg.querySelectorAll('button'),function(x){x.classList.remove('on');});
+        b.classList.add('on'); shape=b.getAttribute('data-shape'); draw();
+      });
+    });
+    aSlider.addEventListener('input',draw);
+    draw();
+  })();
+})();
+</script>
+
+</body>
+</html>

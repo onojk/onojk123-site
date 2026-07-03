@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infinite Circles — onojk123</title>
+<meta name="description" content="Infinite chips, infinite circles, infinite amplitude. A circle of infinite amplitude has no reason to end — because ending was never a property of the shape. It was a property of the scale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f2e9; --ink:#241f18; --soft:#6b5f4f; --faint:#8a7c64;
+    --rule:#d8cdb8; --kink:#b2401f; --kink-soft:#c56b48; --panel:#efe8da;
+    --curve:#7a8b5a; --turn:#2f5d63;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Spectral",Georgia,serif;font-size:19px;line-height:1.66;
+    font-feature-settings:"liga","onum";-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 28px;}
+  header.top{padding:76px 0 0;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--faint);text-align:center;margin:0 0 30px;}
+  h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(46px,10vw,84px);
+    line-height:.96;letter-spacing:-.015em;text-align:center;margin:0 0 4px;}
+  .dek{font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+    font-size:clamp(20px,3.4vw,25px);line-height:1.34;color:var(--soft);
+    text-align:center;max-width:35ch;margin:22px auto 0;}
+  .byline{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.04em;
+    color:var(--faint);text-align:center;margin:40px 0 0;}
+  .byline a{color:var(--kink);text-decoration:none;border-bottom:1px solid var(--kink-soft);}
+  .rule-top{border:0;border-top:1px solid var(--rule);max-width:120px;margin:30px auto 0;}
+  main{padding:52px 0 0;}
+  p{margin:0 0 24px;} p.lead{margin-top:0;}
+  .dropcap::first-letter{font-family:"Fraunces",serif;font-weight:600;float:left;
+    font-size:78px;line-height:.72;padding:8px 12px 0 0;color:var(--kink);}
+  em{font-style:italic;} strong{font-weight:500;}
+  .mono{font-family:"IBM Plex Mono",monospace;font-size:.86em;}
+  h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(28px,5vw,38px);
+    line-height:1.06;letter-spacing:-.01em;margin:8px 0 20px;}
+  .sec-label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--kink);margin:0 0 2px;}
+  .numeral{font-family:"Fraunces",serif;font-weight:600;color:var(--kink);
+    font-size:46px;line-height:1;float:left;padding:2px 14px 0 0;}
+  .sec-head{overflow:hidden;margin:52px 0 22px;}
+  .sec-head .sec-label{margin-top:6px;}
+  figure{margin:44px 0;}
+  figcaption{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+    color:var(--faint);text-align:center;margin-top:14px;}
+  .card{border:1px solid var(--rule);border-radius:2px;background:rgba(255,255,255,.35);
+    padding:26px 28px;margin:40px 0;}
+  .card .kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--kink);margin:0 0 10px;}
+  .card h3{font-family:"Fraunces",serif;font-weight:600;font-size:24px;margin:0 0 8px;}
+  .card p{font-size:17px;color:var(--soft);margin:0 0 6px;}
+  .card .go{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--kink);margin-top:10px;}
+  .card .go a{color:var(--kink);text-decoration:none;}
+  .pull{font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+    font-size:clamp(22px,4vw,30px);line-height:1.24;color:var(--kink);
+    text-align:center;margin:46px auto;max-width:28ch;}
+  .zig{display:block;width:100%;height:34px;margin:52px 0;color:var(--kink);}
+  .fig-interactive{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
+    padding:22px 20px 20px;margin:44px 0;}
+  .fig-interactive svg{display:block;width:100%;height:auto;}
+  .controls{display:flex;align-items:center;gap:14px;margin:16px 2px 4px;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--soft);flex-wrap:wrap;}
+  .controls label{white-space:nowrap;letter-spacing:.02em;}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:3px;background:var(--rule);
+    border-radius:2px;flex:1 1 180px;min-width:140px;outline:none;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;
+    border-radius:50%;background:var(--kink);cursor:pointer;border:2px solid var(--paper);}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--kink);
+    cursor:pointer;border:2px solid var(--paper);}
+  .readout{display:flex;gap:24px;flex-wrap:wrap;margin:12px 2px 0;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--faint);}
+  .readout b{color:var(--ink);font-weight:500;}
+  .digits{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.06em;
+    color:var(--ink);word-break:break-all;line-height:1.7;margin:2px;}
+  .digits .new{color:var(--kink);font-weight:500;}
+  footer{padding:70px 0 90px;text-align:center;}
+  footer .home{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.04em;color:var(--faint);}
+  footer .home a{color:var(--kink);text-decoration:none;border-bottom:1px solid var(--kink-soft);}
+  footer .sig{font-family:"Fraunces",serif;font-style:italic;color:var(--soft);margin-top:26px;font-size:18px;}
+  @media (max-width:560px){body{font-size:18px;}.wrap{padding:0 20px;}header.top{padding:54px 0 0;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">An Art &amp; Intuition Project · onojk123</p>
+    <h1>Infinite Circles</h1>
+    <p class="dek">Infinite chips, infinite circles, infinite amplitude. Take the scale to infinity and you remove the only thing that could ever have made it stop.</p>
+    <p class="byline">Jonathan Kendall · San Diego · a piece of <a href="/">The Rig</a></p>
+    <hr class="rule-top">
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <p class="lead dropcap">A companion piece began with a claim: that the never-landing tip of <span class="mono">1/p</span> is not a defect but a fuel &mdash; a deposit of pure turning, dense enough that, dissolved and laid back down chip by chip, it can build any shape at all. A circle was the simplest thing you could make with it. This piece takes the next step, and it is a strange one. It asks what happens when you stop treating the never-ending as a limit to work around and start treating it as the <em>substance</em> &mdash; when the chips are infinite, the circle is infinite, and the amplitude is infinite. The surprise is not that such a thing runs forever. The surprise is that, once you build it, there is nothing left that could ever make it stop.</p>
+
+    <p>Everything here is honest about what it is: a way of seeing. Where it touches real arithmetic &mdash; the non-termination of <span class="mono">&pi;</span>, the divergence of the primes &mdash; it says so. Where it is only a beautiful way to think, it says that too.</p>
+
+    <div class="sec-head">
+      <span class="numeral">I</span>
+      <p class="sec-label">&mdash; Infinite chips</p>
+      <h2>Any endless number is fuel</h2>
+    </div>
+
+    <p>The engine runs on chips: vanishing increments, each drawn from a never-emptying source and dissolved into a boundary as a notch of turning. All the engine asks of its fuel is one thing &mdash; <em>keep giving.</em> And a number that never terminates is precisely a supply that keeps giving. Its digits never run out; there is always a next one. So a non-terminating number is not a problem for the engine. It is feedstock. The never-ending <em>is</em> the fuel line.</p>
+
+    <p>There are two grades of this fuel, and they are exactly the two ways a decimal can fail to end. <strong>The repeating kind</strong> &mdash; <span class="mono">1/p</span>, a loop, digits that cycle through a fixed block forever &mdash; is fuel that returns: a finite pattern of chips poured over and over, which builds periodic things, shapes with symmetry, the fingerprints of the primes. <strong>The non-repeating kind</strong> &mdash; an irrational, digits that never settle into any pattern &mdash; is fuel that never returns: an endless pour that never cycles, which can build things that never repeat. Both are inexhaustible. They are inexhaustible in different ways: one never runs out because it loops, the other never runs out because it never loops. The engine takes either. It only ever asked for <em>more.</em></p>
+
+    <div class="sec-head">
+      <span class="numeral">II</span>
+      <p class="sec-label">&mdash; The marquee fuel</p>
+      <h2>&pi;, the circle drinking itself</h2>
+    </div>
+
+    <p>Of all the endless numbers, one belongs to the circle: <span class="mono">&pi;</span>, the ratio the circle keeps. And <span class="mono">&pi;</span> never terminates &mdash; an infinite, non-repeating stream, no last digit, ever. Which means the perfect circle can be fed by <span class="mono">&pi;</span>, one digit at a time, forever: each digit another chip, each chip another notch of turning laid evenly around the boundary. You do not need <span class="mono">&pi;</span> to <em>finish</em>. You need it to <em>keep giving</em> &mdash; and non-terminating is the same word as keeps giving.</p>
+
+    <p>There is a quiet perfection in it. The circle's infinitely smooth boundary, supplied by the circle's own never-ending number &mdash; the shape drinking its own source. That is not a coincidence you have to force. A perfectly smooth circle needs an infinite, non-terminating supply of turning to lay down evenly; <span class="mono">&pi;</span> is an infinite, non-terminating supply; and <span class="mono">&pi;</span> is the circle's own constant. The number that never lands feeds the shape that never roughens, and they are the same object, seen twice.</p>
+
+    <p>And you do not <em>look up</em> the next digit &mdash; there is no table, no last digit waiting to be fetched. You run the machine until the digit falls out. The chipper grinds, the chips pile, and at some point the pile has accumulated enough to force the next digit. That forcing is a <strong>toll:</strong> a threshold crossed, a booth stamped, a digit paid out. Want the next one? Do not look elsewhere &mdash; wait. Keep grinding. The next pile builds, trips the next toll, drops the next digit. The toll there is just another chip-pile: not an event separate from the grinding, but the grinding itself reaching the height where the next digit is forced. Grind, pile, toll, digit. Grind, pile, toll, digit. Forever &mdash; because <span class="mono">&pi;</span> never reaches the one booth that would end it.</p>
+
+    <figure class="fig-interactive">
+      <svg id="chipSvg" viewBox="0 0 640 300" aria-label="A chip-pile growing until it trips a toll and releases the next digit of pi."></svg>
+      <div class="controls">
+        <button id="chipBtn" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--paper);background:var(--kink);border:1px solid var(--kink);border-radius:2px;padding:7px 14px;cursor:pointer;">grind for the next digit &rarr;</button>
+        <button id="chipAuto" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--soft);background:transparent;border:1px solid var(--rule);border-radius:2px;padding:7px 14px;cursor:pointer;">run</button>
+      </div>
+      <div class="digits" id="chipDigits">3.</div>
+      <div class="readout">
+        <span>digits paid <b id="chipCount">1</b></span>
+        <span>the toll <b>never reads zero</b></span>
+      </div>
+      <figcaption>Grind, and the pile climbs until it trips the toll and pays out the next digit of &pi;. Then it resets and climbs again for the one after. There is always a next toll &mdash; that is what non-terminating means. (The digits are the true digits of &pi;; the pile is the grinding made visible.)</figcaption>
+    </figure>
+
+    <p class="pull">Every digit is a toll. Every toll is just another chip-pile.</p>
+
+    <div class="sec-head">
+      <span class="numeral">III</span>
+      <p class="sec-label">&mdash; Infinite amplitude</p>
+      <h2>The scale that removes the ending</h2>
+    </div>
+
+    <p>Now the strangest turn, and the one this piece is really about. Amplitude is how many chips you pour &mdash; the radius, the size of the circle. A finite circle <em>closes:</em> you walk the boundary, and after a finite circumference, <span class="mono">2&pi;r</span>, you return to your start. That closing is the only ending a circle has. Nothing else about a circle ends; it has no corners to stop at, no last point. Its whole ending is the return.</p>
+
+    <p>So send the amplitude to infinity. The radius is infinite, the circumference is infinite, and <strong>the return recedes to infinity.</strong> You walk the boundary forever and never come back to where you started &mdash; because "where you started" is now infinitely far behind you, along an arc that never curves back within any finite reach. A circle of infinite amplitude is a circle whose closing point has fled past every finite distance. It has no end because it has no return.</p>
+
+    <p>And that is exactly the parabola from the first piece &mdash; the ellipse stretched until its return recedes to infinity, the one curve whose arms aim at a single point infinitely far away and never quite reach it. The infinite-amplitude circle <em>is</em> the infinite parabola. Zoom into its edge and it is locally straight &mdash; infinite radius means zero local curvature, the flat arms &mdash; and all of its turning has fled to the one point at infinity: the cusp, the never-landing tip. The circle of infinite amplitude is the infinitely sharp point, unrolled. Sharpness and smoothness, the two ends of the whole engine, meet at infinity and turn out to be the same never-ending curve.</p>
+
+    <figure class="fig-interactive">
+      <svg id="ampSvg" viewBox="0 0 640 300" aria-label="As amplitude grows, a fixed window of the circle straightens toward a parabola arm."></svg>
+      <div class="controls">
+        <label for="ampSlider">amplitude&nbsp;<span class="mono" id="ampVal">1&times;</span></label>
+        <input id="ampSlider" type="range" min="0" max="100" value="18" step="1">
+      </div>
+      <div class="readout">
+        <span>local curvature <b id="curvVal">&mdash;</b></span>
+        <span>return point <b id="retVal">on screen</b></span>
+      </div>
+      <figcaption>The window stays the same; only the amplitude grows. As it does, the arc through the window straightens, its curvature drops toward zero, and the point where the circle would close runs off past the edge and away. At infinite amplitude the arc is a straight parabola-arm and the return never comes back.</figcaption>
+    </figure>
+
+    <div class="sec-head">
+      <span class="numeral">IV</span>
+      <p class="sec-label">&mdash; The question</p>
+      <h2>Why would it end?</h2>
+    </div>
+
+    <p>Put the three together &mdash; infinite chips, infinite circle, infinite amplitude &mdash; and a question asks itself. In a circle of infinite amplitude, why would it end? It is not a rhetorical flourish. It is the structural fact the whole engine has been pointing at, because every candidate for "the ending" has already been removed by the very act of making the thing infinite.</p>
+
+    <p>A shape ends by <strong>closing</strong> &mdash; returning to its start. Infinite amplitude pushed the return to infinity: no closing. The chipper ends by reaching the <strong>stop booth</strong> &mdash; the toll that reads zero. <span class="mono">&pi;</span> never divides out to zero, the boundary never returns to its start: the toll never reads zero. A number ends by <strong>terminating</strong> &mdash; a last digit. <span class="mono">&pi;</span> never terminates, the circle never closes: same fact, no last digit. These are not three coincidences. They are one condition in three coats: <em>no return is no zero-toll is no last digit is no end.</em></p>
+
+    <p>And a circle of infinite amplitude satisfies all three at once, of necessity &mdash; because you built it by removing the return, which is the same as removing the stop booth, which is the same as demanding a number that never terminates to supply it. You cannot even construct a circle of infinite amplitude without an endless fuel; a finite number would close it. So the infinite circle <em>requires</em> <span class="mono">&pi;</span> as its feedstock, and <span class="mono">&pi;</span> requires the running chipper that never stops paying tolls, and the chipper never stops precisely because the circle never closes. It is a ring of reasons with no floor &mdash; each "why doesn't it end" answered by the next, all the way around, back to the start, and around again.</p>
+
+    <p>So the question has no answer, and that absence <em>is</em> the answer. Nothing is left that could stop it. You removed the stop when you removed the scale. The never-ending is not something that happens <em>to</em> the infinite circle &mdash; it is what the infinite circle <em>is.</em> The infinitely sharp tip and the infinitely smooth circle are the same never-ending curve; <span class="mono">&pi;</span> is the endless fuel that both requires and is; the chipper runs forever paying digit-tolls it can never zero out. And if you ask why it doesn't end, the honest reply is your own question, handed back:</p>
+
+    <p class="pull">In a circle of infinite amplitude &mdash; what did you imagine was going to stop it?</p>
+
+    <svg class="zig" viewBox="0 0 720 34" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 17 L40 9 L64 25 L104 9 L128 25 L168 12 L200 22 L240 9 L272 25 L312 12 L344 22 L384 9 L420 25 L460 12 L496 22 L536 9 L568 25 L608 12 L644 22 L684 9 L720 17"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+
+    <div class="card">
+      <p class="kicker">Read first &middot; the companion</p>
+      <h3>Infinite Sharpness</h3>
+      <p>Where the chips come from. The never-landing tip of 1/p is the densest deposit of turning there is &mdash; sheathe it, tap it, feed it through a loop that never closes, and the same infinite fuel builds any shape. A circle is only the flat one.</p>
+      <p class="go">&rarr; <a href="/infinite-sharpness">onojk123.com/infinite-sharpness</a></p>
+    </div>
+
+    <div class="card">
+      <p class="kicker">Read next &middot; the short piece</p>
+      <h3>Zeno's Woodchipper</h3>
+      <p>Two machines that look identical. One fills a bag and stops. The other, fed the primes, makes an infinite pile out of infinitely tiny chips &mdash; and never stops. Where the grinding comes from.</p>
+      <p class="go">&rarr; <a href="/zenochipper">onojk123.com/zenochipper</a></p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="home">&larr; <a href="/">back to The Rig</a></p>
+    <p class="sig">A way of seeing, honest about what it is.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var SVGNS="http://www.w3.org/2000/svg";
+  function el(n,a){var e=document.createElementNS(SVGNS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+
+  /* ---------- Figure 1: pi digit chipper ---------- */
+  (function(){
+    var svg=document.getElementById('chipSvg');
+    var btn=document.getElementById('chipBtn'), auto=document.getElementById('chipAuto');
+    var digEl=document.getElementById('chipDigits'), cntEl=document.getElementById('chipCount');
+    // digits AFTER the decimal point of pi (we show "3." then append these)
+    var PI="1415926535897932384626433832795028841971693993751058209749445923";
+    var shown=0;      // how many post-decimal digits paid so far
+    var pile=0, target=8, running=false, timer=null;
+    function renderDigits(){
+      var s='3.';
+      if(shown>0){
+        s += PI.substring(0, shown-1);
+        s += '<span class="new">'+PI.charAt(shown-1)+'</span>';
+      }
+      digEl.innerHTML=s;
+      cntEl.textContent=shown+1;   // count the leading 3 as well
+    }
+    function renderPile(){
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      svg.appendChild(el('line',{x1:40,y1:250,x2:600,y2:250,stroke:'var(--rule)','stroke-width':'1.5'}));
+      svg.appendChild(el('line',{x1:40,y1:70,x2:600,y2:70,stroke:'var(--kink)','stroke-width':'1.5','stroke-dasharray':'5 5'}));
+      var tl=el('text',{x:600,y:64,'text-anchor':'end','font-family':'IBM Plex Mono, monospace','font-size':'12',fill:'var(--kink)'});
+      tl.textContent='the toll'; svg.appendChild(tl);
+      var maxH=180, cx=320, w=120, rows=pile, rowH=maxH/12;
+      for(var i=0;i<rows;i++){
+        var yy=250-(i+1)*rowH+2;
+        var ww=w*(1-0.4*(i/12));
+        svg.appendChild(el('rect',{x:(cx-ww/2).toFixed(1),y:yy.toFixed(1),width:ww.toFixed(1),height:(rowH-3).toFixed(1),
+          rx:'1.5',fill:'var(--curve)',opacity:(0.45+0.5*(i/12)).toFixed(2)}));
+      }
+      var lbl=el('text',{x:cx,y:275,'text-anchor':'middle','font-family':'IBM Plex Mono, monospace','font-size':'12',fill:'var(--soft)'});
+      lbl.textContent='chip-pile'; svg.appendChild(lbl);
+    }
+    function grind(){
+      pile++;
+      if(pile>=target){
+        if(shown<PI.length){ shown++; renderDigits(); }
+        pile=0; target=6+Math.floor(Math.random()*6);
+      }
+      renderPile();
+    }
+    renderDigits(); renderPile();
+    btn.addEventListener('click',grind);
+    auto.addEventListener('click',function(){
+      running=!running; auto.textContent=running?'pause':'run';
+      if(running){ timer=setInterval(function(){ if(shown>=PI.length){running=false;auto.textContent='run';clearInterval(timer);return;} grind(); },150); }
+      else clearInterval(timer);
+    });
+  })();
+
+  /* ---------- Figure 2: infinite amplitude flattening ---------- */
+  (function(){
+    var svg=document.getElementById('ampSvg');
+    var slider=document.getElementById('ampSlider');
+    var ampVal=document.getElementById('ampVal'), curvVal=document.getElementById('curvVal'), retVal=document.getElementById('retVal');
+    var W=640, H=300, winCx=320, winBot=250, halfWin=250; // window half-width in px
+    function draw(v){
+      // map slider 0..100 -> radius R from small to huge (log-ish)
+      var R = 90 * Math.pow(1.9, v/12);   // grows fast
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      // window frame (fixed)
+      svg.appendChild(el('rect',{x:winCx-halfWin,y:60,width:halfWin*2,height:winBot-60,fill:'none',stroke:'var(--rule)','stroke-width':'1','stroke-dasharray':'3 4'}));
+      // circle arc: center below at (winCx, winBot + R_px_offset). We draw the top of a big circle passing through window bottom center.
+      // Represent arc as points y = winBot - (R - sqrt(R^2 - x^2)) scaled; x in [-halfWin, halfWin] in "world" px capped.
+      var d="", N=120, i, x, worldX, sag, y;
+      // world scale: let 1 world unit = 1 px, but clamp so arc fits; use R directly with x up to halfWin
+      for(i=0;i<=N;i++){
+        x = -halfWin + (2*halfWin)*(i/N);         // screen x offset from center
+        worldX = x;                                // treat as world px
+        if(R>Math.abs(worldX)) sag = R - Math.sqrt(R*R - worldX*worldX);
+        else sag = R;
+        y = winBot - (0) - sag;                    // bulge upward
+        d += (i===0?"M ":" L ")+(winCx+x).toFixed(1)+" "+(y).toFixed(1);
+      }
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:'var(--curve)','stroke-width':'2.6'}));
+      // straight reference line (the parabola-arm limit) along window bottom
+      svg.appendChild(el('line',{x1:winCx-halfWin,y1:winBot,x2:winCx+halfWin,y2:winBot,stroke:'var(--turn)','stroke-width':'1','stroke-dasharray':'2 5',opacity:'0.7'}));
+      var rl=el('text',{x:winCx+halfWin,y:winBot+16,'text-anchor':'end','font-family':'IBM Plex Mono, monospace','font-size':'11',fill:'var(--turn)'});rl.textContent='straight limit';svg.appendChild(rl);
+      // readouts
+      var ampFactor = (R/90);
+      ampVal.textContent = ampFactor>=1000 ? (ampFactor/1000).toFixed(1)+'k&times;' : Math.round(ampFactor)+'&times;';
+      curvVal.textContent = (1/R).toFixed(5);
+      retVal.textContent = R>4000 ? 'off to infinity' : (R>800 ? 'far off screen' : 'still nearby');
+    }
+    slider.addEventListener('input',function(){draw(parseInt(slider.value,10));});
+    draw(parseInt(slider.value,10));
+  })();
+})();
+</script>
+
+</body>
+</html>
