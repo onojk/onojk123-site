@@ -9,6 +9,7 @@
 <meta property="og:description" content="A triangle of two primes, launched up the axes, blooming into circles. A way to see the wall that hides a secret.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="/js/radio-player.js" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -59,6 +60,12 @@
   .readnext .rn-title{font-family:"Fraunces",serif;font-weight:500;font-size:1.3rem;line-height:1.15;margin-bottom:.2rem}
   .readnext .rn-sub{font-size:.98rem;color:var(--ink-soft);line-height:1.45}
   .readnext .rn-go{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--turn);margin-top:.5rem;display:inline-block}
+
+  .radio{margin:0 0 1rem}
+  .radio radio-player{--rp-accent:#c8552f;--rp-bg:var(--ink);--rp-fg:var(--paper);
+    --rp-font:"IBM Plex Mono",ui-monospace,monospace;--rp-radius:10px;margin:0 0 .8rem}
+  .radio .rn-go{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--turn);text-decoration:none}
+  .radio .rn-go:hover{text-decoration:underline}
 
   blockquote{margin:2.6rem 0;padding:0 0 0 1.4rem;border-left:2px solid var(--kink);
     font-family:"Fraunces",serif;font-weight:400;font-size:1.5rem;line-height:1.32;color:var(--ink);}
@@ -289,6 +296,15 @@
     <p>You measure the toll, not the road. The road between primes is infinite; the toll — the gap, the resistance — is finite, and that is what you pay. The rocket tunnels: it appears at the next prime without ever crossing the distance, the way a struck bell does not travel to its note but simply rings. The motion between the ticks is not lost. It never existed. There were only the kicks.</p>
     <p>And because each Rig, flattened, takes up no depth, you can stand infinitely many of them side by side — a deck of flat states, every semiprime, every setting, every moment of the climb, laid out at once and read across in a single glance. The same flatness that makes the wall strong leaves the third dimension free to compare. You do not move through the states. You lay them down, and look.</p>
     <blockquote><p>You measure the toll, not the road. The road is infinite; the toll is finite — and the leap is free.</p></blockquote>
+  </div>
+</section>
+
+<section class="radio">
+  <div class="wrap">
+    <p class="section-no">ON AIR — ONOJK RADIO</p>
+    <radio-player src="https://radio.onojk123.com/stream" title="onojk radio"
+      theme="dark" history="on" visualizer="lines"></radio-player>
+    <a class="rn-go" href="/radio/">→ onojk123.com/radio · music by Jonathan Kendall</a>
   </div>
 </section>
 
