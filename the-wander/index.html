@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Wander in the Gap</title>
+<meta name="description" content="Two concentric circles and the space between them. Fill that gap with Mobius chips — plus one, minus one, and hole — and the gap breathes. Its wander is the deepest open question about the primes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#241f1a;
+    --ink-soft:#5b5148;
+    --kink:#b2401f;      /* +1  : warm, the pile that grows */
+    --cool:#2f5d62;      /* -1  : cool, the chip that cancels */
+    --line:#d8cfbe;
+    --hole:#b8ad9a;      /*  0  : the seat with no vote */
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--paper);color:var(--ink);}
+  body{
+    font-family:"Spectral",Georgia,serif;
+    font-size:19px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    padding:0 1.4rem;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:5.5rem 0 6rem;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--kink);margin-bottom:1.3rem;
+  }
+  h1{
+    font-family:"Fraunces",serif;
+    font-weight:600;font-size:clamp(2.5rem,7vw,4.1rem);
+    line-height:1.02;letter-spacing:-.015em;margin:0 0 1.1rem;
+  }
+  .standfirst{
+    font-family:"Spectral",serif;font-style:italic;
+    font-size:1.28rem;line-height:1.5;color:var(--ink-soft);
+    max-width:34ch;margin:0 0 2.4rem;
+  }
+  p{margin:0 0 1.35rem;}
+  .lead::first-letter{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:3.4em;line-height:.72;float:left;
+    padding:.06em .09em 0 0;color:var(--kink);
+  }
+  strong{font-weight:500;color:var(--ink);}
+  em{font-style:italic;}
+  .mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;}
+
+  /* ---- the machine ---- */
+  .stage{
+    margin:3rem 0 1.2rem;
+    background:radial-gradient(120% 120% at 50% 42%,#faf7f0 0%,#f2ecdf 78%,#ece4d3 100%);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:1.4rem 1.4rem 1.1rem;
+  }
+  canvas{display:block;width:100%;height:auto;touch-action:none;}
+  .readout{
+    display:flex;flex-wrap:wrap;gap:1.4rem 2.2rem;
+    font-family:"IBM Plex Mono",monospace;font-size:.82rem;
+    margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .readout b{
+    display:block;font-weight:400;font-size:.66rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--hole);margin-bottom:.28em;
+  }
+  .readout span{font-size:1.32rem;color:var(--ink);font-weight:500;}
+  .val-pos{color:var(--kink)!important;}
+  .val-neg{color:var(--cool)!important;}
+  .val-zero{color:var(--hole)!important;}
+
+  .controls{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.1rem;
+    margin-top:1.1rem;
+  }
+  button{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    letter-spacing:.06em;
+    background:var(--ink);color:var(--paper);border:none;
+    padding:.6rem 1.15rem;border-radius:2px;cursor:pointer;
+    transition:background .15s ease,transform .05s ease;
+  }
+  button:hover{background:var(--kink);}
+  button:active{transform:translateY(1px);}
+  button.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink);}
+  button.ghost:hover{background:var(--ink);color:var(--paper);}
+  button:focus-visible{outline:2px solid var(--kink);outline-offset:2px;}
+  .speed{display:flex;align-items:center;gap:.55rem;font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-soft);}
+  input[type=range]{accent-color:var(--kink);width:120px;}
+
+  .legend{
+    display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+    color:var(--ink-soft);margin-top:.9rem;
+  }
+  .legend i{display:inline-block;width:.72em;height:.72em;border-radius:50%;margin-right:.5em;vertical-align:-.05em;}
+  .swatch-pos{background:var(--kink);}
+  .swatch-neg{background:var(--cool);}
+  .swatch-zero{background:transparent;border:1.5px solid var(--hole);}
+
+  .cap{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--ink-soft);margin:.6rem 0 0;line-height:1.55;}
+
+  .kink{border:0;height:0;text-align:center;margin:3.2rem 0;overflow:visible;}
+  .kink::after{content:"\2325";color:var(--kink);font-size:1.1rem;letter-spacing:.4em;}
+
+  h2{
+    font-family:"Fraunces",serif;font-weight:500;
+    font-size:1.62rem;letter-spacing:-.01em;margin:2.8rem 0 1rem;
+  }
+  .note{
+    font-family:"IBM Plex Mono",monospace;font-size:.82rem;line-height:1.65;
+    color:var(--ink-soft);background:#efe8da;border-left:2px solid var(--kink);
+    padding:1.1rem 1.3rem;margin:2rem 0;border-radius:0 2px 2px 0;
+  }
+  .foot{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--hole);
+    margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--line);
+  }
+  a{color:var(--kink);text-decoration:none;border-bottom:1px solid var(--line);}
+  a:hover{border-bottom-color:var(--kink);}
+  @media (max-width:560px){
+    body{font-size:17px;}
+    .wrap{padding:3.5rem 0 4rem;}
+    .readout span{font-size:1.1rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">onojk123 · a woodchipper, run backward</div>
+  <h1>The Wander in the Gap</h1>
+  <p class="standfirst">Two circles, one center, and the thin space between them. Fill that space with Möbius chips — plus&nbsp;one, minus&nbsp;one, and hole — and watch the gap breathe.</p>
+
+  <p class="lead">Build one circle out of the primes and it comes out perfect — every chip laid evenly, a smooth ring of infinite fuel. Now deal the primes into <em>two</em> circles instead of one, and a gap opens between them. That gap is a ledger. Whatever you write into it, its running total decides how far the outer ring drifts from the inner. So the only question left is: <strong>what do you write in the gap?</strong></p>
+
+  <p>The forward woodchipper only ever throws one kind of chip — positive, additive, a pile that grows and never cancels. That is why it cannot be run in reverse: nothing in it can take anything away. The reverse needs three chips, not one. It needs <strong>+1</strong>, it needs <strong>−1</strong>, and it needs the chip a grinding machine can never make: <strong>0</strong> — the empty seat, the number that holds a place and casts no vote. Those three tokens already have a name. They are the Möbius function, μ(n): <span class="mono">+1</span> for a squarefree number with an even count of prime factors, <span class="mono">−1</span> for an odd count, and <span class="mono">0</span> for anything divisible by a square — anything not clean.</p>
+
+  <p>Lay one μ-chip in the gap for every integer, going around. The <strong>running sum</strong> of those chips is the width of the gap at each step — and that running sum is Mertens's function, <span class="mono">M(n)&nbsp;=&nbsp;μ(1)+μ(2)+…+μ(n)</span>. Below is the machine doing exactly that. The pale circle is the ideal — perfectly concentric, the circle the primes <em>would</em> build if they were tame. The wandering line is what they actually build. Where it swings out past the ideal, M is positive and the gap glows warm; where it dips inside, M is negative and the gap goes cool; where the two curves kiss, M has returned to zero and the gap has pinched shut.</p>
+
+  <div class="stage">
+    <canvas id="ring" width="1400" height="1000" aria-label="Animated ring showing the Mertens function as a breathing gap between two circles"></canvas>
+    <div class="readout">
+      <div><b>integer n</b><span id="r-n">1</span></div>
+      <div><b>this chip &mu;(n)</b><span id="r-mu" class="val-pos">+1</span></div>
+      <div><b>gap total M(n)</b><span id="r-M">1</span></div>
+      <div><b>widest so far</b><span id="r-max">1</span></div>
+    </div>
+    <div class="controls">
+      <button id="play">pause</button>
+      <button id="reset" class="ghost">restart</button>
+      <div class="speed"><label for="spd">deal speed</label><input id="spd" type="range" min="1" max="40" value="10"></div>
+    </div>
+    <div class="legend">
+      <span><i class="swatch-pos"></i>+1 · clean, even</span>
+      <span><i class="swatch-neg"></i>−1 · clean, odd</span>
+      <span><i class="swatch-zero"></i>0 · not squarefree (the hole)</span>
+    </div>
+    <p class="cap">Each spoke is one integer, dealt clockwise from the top. n runs 1 → 3000 around the ring.</p>
+  </div>
+
+  <hr class="kink">
+
+  <h2>What the shape is, honestly</h2>
+  <p>Everything the ring draws is real. μ(n) is a real function; M(n) is its real running total; the pinch-points really are the integers where M returns to zero. The wander really does stay startlingly small for a machine fed three thousand chips — that smallness is the whole mystery.</p>
+
+  <p>For a long time people guessed the gap could never widen past √n — the <strong>Mertens conjecture</strong>, <span class="mono">|M(n)| &lt; √n</span>. It is false. Odlyzko and te&nbsp;Riele disproved it in 1985; somewhere out past the range any machine will ever draw, the gap does breach that wall — though the smallest n where it happens still isn't known. What <em>survives</em> is softer and deeper: the Riemann Hypothesis is equivalent to the gap growing no faster than <span class="mono">M(x)&nbsp;=&nbsp;O(x^{1/2+ε})</span>. So the width of this gap, taken all the way out, is not a curiosity. It is one face of the last great open question about the primes.</p>
+
+  <div class="note">The seam, said plainly: the ring <strong>displays</strong> M(n); it does not <strong>outrun</strong> it. To place each chip you must already know whether n is clean — you have to factor it first. So the annulus can carry the whole mystery in its shape and hand you none of the answer. It is the perfect register and the useless oracle at once: an object whose form is exactly as hard to predict as the thing it is made of. That may be the real subject here — not a way to break the primes, but the cleanest drawing of <em>why</em> you can't.</p>
+
+  <p>Which is the honest end of the woodchipper run backward. You can't un-grind the pile. But you can build the machine that <em>would</em> have to run in reverse — the one with the minus and the hole — and let it draw you the exact shape of its own impossibility, breathing, on a ring.</p>
+
+  <p class="foot">the-wander · onojk123.com · μ(n), M(n), and the space between two circles<br>math is honest where it is math and a picture where it is only a picture</p>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var N = 3000;
+
+  // ---- linear sieve for the Mobius function ----
+  var mu = new Int8Array(N+1);
+  var M  = new Int32Array(N+1);
+  (function sieve(){
+    mu[1] = 1;
+    var primes = [];
+    var comp = new Uint8Array(N+1);
+    for(var i=2;i<=N;i++){
+      if(!comp[i]){ primes.push(i); mu[i] = -1; }
+      for(var j=0;j<primes.length;j++){
+        var p = primes[j];
+        if(i*p > N) break;
+        comp[i*p] = 1;
+        if(i % p === 0){ mu[i*p] = 0; break; }
+        else { mu[i*p] = -mu[i]; }
+      }
+    }
+    var run = 0, mx = 0;
+    for(var n=1;n<=N;n++){ run += mu[n]; M[n] = run; if(Math.abs(run)>mx) mx = Math.abs(run); }
+    M.maxAbs = mx || 1;
+  })();
+
+  var cv = document.getElementById('ring');
+  var ctx = cv.getContext('2d');
+  var CSS = getComputedStyle(document.documentElement);
+  var C = {
+    paper: CSS.getPropertyValue('--paper').trim(),
+    ink:   CSS.getPropertyValue('--ink').trim(),
+    kink:  CSS.getPropertyValue('--kink').trim(),
+    cool:  CSS.getPropertyValue('--cool').trim(),
+    hole:  CSS.getPropertyValue('--hole').trim(),
+    line:  CSS.getPropertyValue('--line').trim()
+  };
+
+  var W, H, cx, cy, R0, amp, dpr;
+  function layout(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    var cssW = cv.clientWidth || 700;
+    var cssH = Math.round(cssW * 0.72);
+    cv.width  = Math.round(cssW*dpr);
+    cv.height = Math.round(cssH*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    W = cssW; H = cssH;
+    cx = W/2; cy = H/2;
+    R0 = Math.min(W,H) * 0.31;
+    amp = (Math.min(W,H) * 0.30) / M.maxAbs;  // scale so the widest wander fills the frame
+  }
+
+  function ang(n){ return -Math.PI/2 + (n / N) * Math.PI * 2; }
+  function rad(n){ return R0 + amp * M[n]; }
+  function pt(n){ var a = ang(n), r = rad(n); return [cx + r*Math.cos(a), cy + r*Math.sin(a)]; }
+  function refPt(n){ var a = ang(n); return [cx + R0*Math.cos(a), cy + R0*Math.sin(a)]; }
+
+  var cur = 1, playing = true, speed = 10, acc = 0;
+  var elN=document.getElementById('r-n'), elMu=document.getElementById('r-mu'),
+      elM=document.getElementById('r-M'), elMax=document.getElementById('r-max');
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    // filled breathing gap: one thin quad per integer, colored by sign of M
+    for(var n=1;n<cur;n++){
+      var a0 = refPt(n), a1 = refPt(n+1), b1 = pt(n+1), b0 = pt(n);
+      var s = M[n];
+      if(s === 0) continue;
+      ctx.beginPath();
+      ctx.moveTo(a0[0],a0[1]); ctx.lineTo(a1[0],a1[1]);
+      ctx.lineTo(b1[0],b1[1]); ctx.lineTo(b0[0],b0[1]);
+      ctx.closePath();
+      ctx.fillStyle = s>0 ? 'rgba(178,64,31,0.11)' : 'rgba(47,93,98,0.13)';
+      ctx.fill();
+    }
+
+    // ideal circle (the concentric reference)
+    ctx.beginPath();
+    ctx.setLineDash([2,5]);
+    ctx.arc(cx,cy,R0,0,Math.PI*2);
+    ctx.strokeStyle = C.line;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // the wander line
+    ctx.beginPath();
+    for(var m=1;m<=cur;m++){
+      var q = pt(m);
+      if(m===1) ctx.moveTo(q[0],q[1]); else ctx.lineTo(q[0],q[1]);
+    }
+    ctx.strokeStyle = C.ink;
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+
+    // chips (dots), colored by mu; holes drawn as hollow ticks
+    var start = Math.max(1, cur-900);          // keep it light: recent chips only
+    for(var k=start;k<=cur;k++){
+      var v = mu[k]; var p = pt(k);
+      if(v === 0){
+        ctx.beginPath();
+        ctx.arc(p[0],p[1],1.7,0,Math.PI*2);
+        ctx.strokeStyle = C.hole; ctx.lineWidth = 1;
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.arc(p[0],p[1], v>0?2.1:1.9, 0, Math.PI*2);
+        ctx.fillStyle = v>0 ? C.kink : C.cool;
+        ctx.fill();
+      }
+    }
+
+    // leading head marker + spoke to center
+    var head = pt(cur);
+    ctx.beginPath();
+    ctx.moveTo(cx,cy); ctx.lineTo(head[0],head[1]);
+    ctx.strokeStyle = 'rgba(36,31,26,0.16)'; ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(head[0],head[1],4,0,Math.PI*2);
+    ctx.fillStyle = C.ink; ctx.fill();
+
+    // center dot
+    ctx.beginPath(); ctx.arc(cx,cy,2,0,Math.PI*2);
+    ctx.fillStyle = C.hole; ctx.fill();
+  }
+
+  function readout(){
+    var v = mu[cur];
+    elN.textContent = cur;
+    elMu.textContent = v>0?'+1':(v<0?'−1':'0');
+    elMu.className = v>0?'val-pos':(v<0?'val-neg':'val-zero');
+    var mval = M[cur];
+    elM.textContent = (mval>0?'+':'') + mval;
+    elM.className = mval>0?'val-pos':(mval<0?'val-neg':'val-zero');
+    var mx = 0; for(var i=1;i<=cur;i++){ if(Math.abs(M[i])>mx) mx=Math.abs(M[i]); }
+    elMax.textContent = mx;
+  }
+
+  var last = 0;
+  function frame(t){
+    var dt = last?(t-last):16; last = t;
+    if(playing){
+      acc += (speed * dt/1000) * 60 * 0.5;
+      var step = Math.floor(acc);
+      if(step>=1){ acc -= step; cur = Math.min(N, cur+step); }
+      if(cur>=N){ playing=false; document.getElementById('play').textContent='replay'; }
+    }
+    draw(); readout();
+    requestAnimationFrame(frame);
+  }
+
+  // ---- controls ----
+  var playBtn = document.getElementById('play');
+  playBtn.addEventListener('click', function(){
+    if(cur>=N){ cur=1; playing=true; playBtn.textContent='pause'; return; }
+    playing = !playing; playBtn.textContent = playing?'pause':'resume';
+  });
+  document.getElementById('reset').addEventListener('click', function(){
+    cur=1; playing=true; playBtn.textContent='pause';
+  });
+  document.getElementById('spd').addEventListener('input', function(e){
+    speed = +e.target.value;
+  });
+
+  // reduced motion: draw the whole thing at rest
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    playing=false; cur=N; playBtn.textContent='replay';
+  }
+
+  var rz; window.addEventListener('resize', function(){
+    clearTimeout(rz); rz=setTimeout(function(){ layout(); }, 120);
+  });
+
+  layout();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
