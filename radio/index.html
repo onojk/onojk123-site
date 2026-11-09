@@ -44,8 +44,23 @@
   footer a{color:var(--turn);text-decoration:none}
   @media (max-width:560px){ header.masthead{padding-top:3rem} .standfirst{font-size:1.15rem} }
 </style>
+<link rel="stylesheet" href="/css/site-nav.css">
 </head>
 <body>
+<!-- site nav (shared: /css/site-nav.css) -->
+<nav class="sn" aria-label="Site">
+  <div class="sn-in">
+    <a class="sn-home" href="/">← onojk123 home</a>
+    <ul>
+      <li><a href="/#books">Books</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#essays">Essays</a></li>
+      <li><a href="/rig/">The Rig</a></li>
+      <li><a class="sn-radio" href="/radio/" aria-current="page"><span class="sn-dot" aria-hidden="true"></span>Radio<span class="sn-air">On air</span></a></li>
+      <li><a href="/#art">Art</a></li>
+    </ul>
+  </div>
+</nav>
 <header class="masthead">
   <div class="wrap">
     <p class="eyebrow"><a href="/">onojk123</a> · live</p>
@@ -63,7 +78,7 @@
 </main>
 
 <footer>
-  <div class="wrap"><a href="/">← The Rig</a> · onojk123.com</div>
+  <div class="wrap"><a href="/rig/">← The Rig</a> · onojk123.com</div>
 </footer>
 </body>
 </html>
