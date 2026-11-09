@@ -9,7 +9,8 @@
       ".firebase/**",
       "CNAME",
       "README.md",
-      "**/*.bak*"
+      "**/*.bak*",
+      "TODO.md"
     ]
   }
 }

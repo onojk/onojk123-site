@@ -1,0 +1,98 @@
+{
+  "_howto": "Add a book by copying an entry in 'books'. asin = the 10-character Amazon ID (leave \"\" if not live yet; never guess). youtube = full URL of a read-along/audiobook, or \"\". cover = path under /img/books/ (600px tall JPG), or \"\" for a title-only placeholder. note = optional short status line shown when there is no link.",
+  "books": [
+    {
+      "title": "The Wall at Two",
+      "subtitle": "Seeing Why a Number Keeps a Secret",
+      "blurb": "N gives you the circle. It withholds the angle. A visual way into why factoring is hard.",
+      "cover": "/img/books/the-wall-at-two.jpg",
+      "asin": "B0H74NF3LY",
+      "youtube": ""
+    },
+    {
+      "title": "Preservation and Horizons",
+      "subtitle": "On Difficulty, Verification, and Structural Limits",
+      "blurb": "What it costs to check an answer, what it costs to find one, and where the structural limits sit.",
+      "cover": "/img/books/preservation-and-horizons.jpg",
+      "asin": "B0GHZNB9WP",
+      "youtube": ""
+    },
+    {
+      "title": "The Rooms That Hold Us",
+      "subtitle": "Storms, Survival, and the Gatherings That Remake a People",
+      "blurb": "How storms change us for good, and how small gatherings turn private survival into the remaking of a people.",
+      "cover": "/img/books/the-rooms-that-hold-us.jpg",
+      "asin": "B0HNG99FWQ",
+      "youtube": ""
+    },
+    {
+      "title": "The Big Book of Prime Secrets",
+      "subtitle": "How Numbers Keep Secrets, and Why No One Has Cracked Them",
+      "blurb": "Four books in one volume: The Wall at Two, Preservation and Horizons, The Real Gatekeeper and Light Through the Holes.",
+      "cover": "/img/books/big-book-of-prime-secrets.jpg",
+      "asin": "",
+      "youtube": ""
+    },
+    {
+      "title": "The Free Machine, Book One",
+      "subtitle": "How Computers Work and Who Fought to Control Them",
+      "blurb": "A computer built from the idea up, then followed into the world: Bell Labs, phone phreaks, Unix, GNU, Linux and AI.",
+      "cover": "/img/books/the-free-machine-book-one.jpg",
+      "asin": "",
+      "youtube": ""
+    },
+    {
+      "title": "The Free Machine, Book Two",
+      "subtitle": "Daily Driving Linux, Building With AI, and Wiring Your Own Computer",
+      "blurb": "The machine in your hands: live on Linux, build software with an AI partner, run a Pi radio station, wire a light show.",
+      "cover": "/img/books/the-free-machine-book-two.jpg",
+      "asin": "",
+      "youtube": ""
+    },
+    {
+      "title": "Light Through the Holes",
+      "subtitle": "Sieves, Strikes, and the Price of Seeing Primes",
+      "blurb": "A history of the sieve, from Eratosthenes' counting board to machines that listened for light.",
+      "cover": "/img/books/light-through-the-holes.jpg",
+      "asin": "",
+      "youtube": ""
+    },
+    {
+      "title": "The Garden That Computes",
+      "subtitle": "Computers Grown, Not Built",
+      "blurb": "Nanites, crops, cells and seeds: what a living machine can do, and where the toll still catches it.",
+      "cover": "/img/books/the-garden-that-computes.jpg",
+      "asin": "",
+      "youtube": ""
+    },
+    {
+      "title": "The Real Gatekeeper",
+      "subtitle": "What Difficulty Is Made Of, and Who Paid It First",
+      "blurb": "The toll, the forgetting, the buffer and the asymmetry: what difficulty is made of.",
+      "cover": "/img/books/the-real-gatekeeper.jpg",
+      "asin": "",
+      "youtube": "",
+      "note": "Audiobook on YouTube · link coming soon"
+    }
+  ],
+  "series": [
+    {
+      "name": "The Number Country",
+      "arc": "Arc One",
+      "blurb": "",
+      "note": "Arc Two (Books 11–20) coming.",
+      "books": [
+        { "n": 1,  "title": "Forward Only",           "tagline": "Forward is free. Backward is forever.",   "cover": "/img/books/nc-01-forward-only.jpg",           "asin": "" },
+        { "n": 2,  "title": "The Ceiling",            "tagline": "Anyone may seal it. Only two may open it.", "cover": "/img/books/nc-02-the-ceiling.jpg",          "asin": "" },
+        { "n": 3,  "title": "The Mirror Abacus",      "tagline": "",                                         "cover": "/img/books/nc-03-the-mirror-abacus.jpg",      "asin": "" },
+        { "n": 4,  "title": "The Sideways Country",   "tagline": "Two cities. One question.",                "cover": "/img/books/nc-04-the-sideways-country.jpg",   "asin": "" },
+        { "n": 5,  "title": "The Ring of N",          "tagline": "Every walk comes back on itself.",         "cover": "/img/books/nc-05-the-ring-of-n.jpg",          "asin": "" },
+        { "n": 6,  "title": "The Wander",             "tagline": "Left, right, rest.",                       "cover": "/img/books/nc-06-the-wander.jpg",             "asin": "" },
+        { "n": 7,  "title": "The Dial",               "tagline": "The signal is free.",                      "cover": "/img/books/nc-07-the-dial.jpg",               "asin": "" },
+        { "n": 8,  "title": "The Log Bridge",         "tagline": "Houses multiply. Steps add.",              "cover": "/img/books/nc-08-the-log-bridge.jpg",         "asin": "" },
+        { "n": 9,  "title": "The Hoard",              "tagline": "Seal now. Read later.",                    "cover": "/img/books/nc-09-the-hoard.jpg",              "asin": "" },
+        { "n": 10, "title": "The Tower Nobody Built", "tagline": "What is built first is kept.",             "cover": "/img/books/nc-10-the-tower-nobody-built.jpg", "asin": "" }
+      ]
+    }
+  ]
+}

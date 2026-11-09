@@ -1,0 +1,35 @@
+/* Shared site nav for onojk123.com.
+   Self-contained: hard-coded colours and class-scoped rules so it looks the
+   same on every page and never restyles the page it sits on. */
+.sn{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.76rem;line-height:1.4;
+  letter-spacing:.06em;font-weight:400;font-style:normal;text-transform:none;
+  background:#f6f2e9;color:#4a4640;border-bottom:1px solid #d9d1bf;
+  -webkit-font-smoothing:antialiased;position:relative;z-index:5}
+.sn-in{max-width:64rem;margin:0 auto;padding:.35rem 1.5rem;display:flex;flex-wrap:wrap;
+  align-items:center;justify-content:space-between;gap:0 1.4rem}
+.sn ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 1.15rem}
+.sn li{margin:0;padding:0}
+.sn li::before{content:none}
+.sn a{display:inline-block;padding:.5rem 0;color:#4a4640;text-decoration:none;
+  border:0;border-bottom:1px solid transparent;background:none;transition:color .15s,border-color .15s}
+.sn a:hover,.sn a:focus-visible{color:#b2401f;border-bottom-color:#b2401f}
+.sn a:focus-visible{outline:2px solid #2f5d63;outline-offset:2px}
+.sn a[aria-current="page"]{color:#1a1814;border-bottom-color:#1a1814}
+.sn .sn-home{color:#1a1814;font-weight:500;letter-spacing:.08em}
+.sn .sn-radio{color:#b2401f;font-weight:500}
+.sn-dot{display:inline-block;width:.5rem;height:.5rem;margin:0 .45rem 0 .1rem;border-radius:50%;
+  background:#c8552f;vertical-align:.04em;box-shadow:0 0 0 0 rgba(200,85,47,.55)}
+.sn-air{display:inline-block;margin-left:.45rem;padding:.05rem .35rem;border:1px solid currentColor;
+  border-radius:3px;font-size:.62rem;letter-spacing:.14em;line-height:1.3;vertical-align:.08em}
+@media (prefers-reduced-motion:no-preference){
+  .sn-dot{animation:sn-pulse 1.8s ease-out infinite}
+}
+@keyframes sn-pulse{
+  0%{box-shadow:0 0 0 0 rgba(200,85,47,.55)}
+  70%{box-shadow:0 0 0 .45rem rgba(200,85,47,0)}
+  100%{box-shadow:0 0 0 0 rgba(200,85,47,0)}
+}
+@media (max-width:560px){
+  .sn-in{padding:.3rem 1rem}
+  .sn ul{gap:0 .95rem}
+}
