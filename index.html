@@ -109,8 +109,12 @@
   .series .num{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.12em;color:var(--kink)}
   .series .t{font-family:"Fraunces",serif;font-weight:500;font-size:1rem;line-height:1.2}
   .series .tag{font-size:.85rem;font-style:italic;color:var(--ink-soft);line-height:1.35}
-  .series li a{color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:.15rem}
-  .series li a:hover .t,.series li a:focus-visible .t{color:var(--kink)}
+  .series li .links{padding-top:.35rem;font-size:.72rem;gap:.15rem .8rem}
+  .series li .status{font-size:.68rem}
+  .vols{display:flex;flex-wrap:wrap;gap:.1rem .7rem;align-items:baseline}
+  .vols-l{color:var(--ink-soft);flex-basis:100%}
+  .vols-sep{color:var(--ink-soft)}
+  .vols{gap:.1rem .45rem}
   .series .note{margin:1.3rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft)}
 
   /* ---------- projects ---------- */
@@ -398,6 +402,25 @@
   var okAsin=function(a){return typeof a==='string'&&/^[A-Z0-9]{10}$/.test(a);};
   function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
   function link(href,text){var a=el('a',null,text);a.href=href;return a;}
+  function ext(href,text){var a=link(href,text);a.target='_blank';a.rel='noopener';return a;}
+  // youtube: "" | "https://..." | [{"label":"Vol. 1","url":"https://..."}, ...]
+  function videos(y){if(!y)return[];if(typeof y==='string')return[{url:y}];return y.filter(function(v){return v&&v.url;});}
+  function linkRow(b,fallback){
+    var row=el('p','links');
+    if(okAsin(b.asin))row.appendChild(ext(AMZ+b.asin,'Get it on Amazon'));
+    var v=videos(b.youtube);
+    if(v.length===1&&!v[0].label)row.appendChild(ext(v[0].url,'Watch the free read-along'));
+    else if(v.length){
+      var g=el('span','vols');g.appendChild(el('span','vols-l','Watch the free read-along:'));
+      v.forEach(function(x,i){var a=ext(x.url,x.label||('Part '+(i+1)));
+        a.setAttribute('aria-label','Watch the free read-along of '+b.title+', '+(x.label||('part '+(i+1))));
+        if(i){var sep=el('span','vols-sep','·');sep.setAttribute('aria-hidden','true');g.appendChild(sep);}
+        g.appendChild(a);});
+      row.appendChild(g);
+    }
+    if(!row.childNodes.length)row.appendChild(el('span','status',fallback));
+    return row;
+  }
   function placeholder(title,label){var d=el('div','ph',title);d.setAttribute('role','img');
     d.setAttribute('aria-label','Cover placeholder: '+title);if(label)d.appendChild(el('small',null,label));return d;}
   function cover(src,title,label){
@@ -414,28 +437,22 @@
     body.appendChild(el('h3',null,b.title));
     if(b.subtitle)body.appendChild(el('p','subtitle',b.subtitle));
     if(b.blurb)body.appendChild(el('p','blurb',b.blurb));
-    var links=el('p','links');
-    if(okAsin(b.asin))links.appendChild(link(AMZ+b.asin,'Kindle on Amazon →'));
-    if(b.youtube)links.appendChild(link(b.youtube,'Read-along on YouTube →'));
-    if(!links.childNodes.length)links.appendChild(el('span','status',b.note||'Coming soon'));
+    var links=linkRow(b,b.note||'Coming soon');
     body.appendChild(links);c.appendChild(body);return c;
   }
   function seriesBlock(s){
     var box=el('div','series');
     box.appendChild(el('h3',null,s.name));
-    var anyLink=s.books.some(function(b){return okAsin(b.asin)||b.youtube;});
-    box.appendChild(el('p','meta','A series · '+(s.arc?s.arc+', ':'')+'Books 1–'+s.books.length+(anyLink?'':' · Coming soon')));
+    box.appendChild(el('p','meta','A series · '+(s.arc?s.arc+', ':'')+'Books 1–'+s.books.length));
     if(s.blurb)box.appendChild(el('p','blurb',s.blurb));
     var ol=el('ol');
     s.books.forEach(function(b){
       var li=el('li');
-      var href=okAsin(b.asin)?AMZ+b.asin:(b.youtube||'');
-      var host=li;
-      if(href){host=link(href,'');li.appendChild(host);}
-      host.appendChild(cover(b.cover,b.title,s.name+' · '+b.n));
-      host.appendChild(el('span','num','BOOK '+b.n));
-      host.appendChild(el('span','t',b.title));
-      if(b.tagline)host.appendChild(el('span','tag',b.tagline));
+      li.appendChild(cover(b.cover,b.title,s.name+' · '+b.n));
+      li.appendChild(el('span','num','BOOK '+b.n));
+      li.appendChild(el('span','t',b.title));
+      if(b.tagline)li.appendChild(el('span','tag',b.tagline));
+      li.appendChild(linkRow(b,'Coming soon'));
       ol.appendChild(li);
     });
     box.appendChild(ol);

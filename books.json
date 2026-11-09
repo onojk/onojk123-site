@@ -15,7 +15,7 @@
       "blurb": "What it costs to check an answer, what it costs to find one, and where the structural limits sit.",
       "cover": "/img/books/preservation-and-horizons.jpg",
       "asin": "B0GHZNB9WP",
-      "youtube": ""
+      "youtube": "https://youtu.be/SAHCM3tFhv4"
     },
     {
       "title": "The Rooms That Hold Us",
@@ -23,15 +23,24 @@
       "blurb": "How storms change us for good, and how small gatherings turn private survival into the remaking of a people.",
       "cover": "/img/books/the-rooms-that-hold-us.jpg",
       "asin": "B0HNG99FWQ",
-      "youtube": ""
+      "youtube": "https://youtu.be/J778DGNDkbQ"
     },
     {
       "title": "The Big Book of Prime Secrets",
       "subtitle": "How Numbers Keep Secrets, and Why No One Has Cracked Them",
       "blurb": "Four books in one volume: The Wall at Two, Preservation and Horizons, The Real Gatekeeper and Light Through the Holes.",
       "cover": "/img/books/big-book-of-prime-secrets.jpg",
-      "asin": "",
-      "youtube": ""
+      "asin": "B0HPZXW944",
+      "youtube": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/YzuMakgTa5k"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/8QsHtq_bP4g"
+        }
+      ]
     },
     {
       "title": "The Free Machine, Book One",
@@ -39,7 +48,28 @@
       "blurb": "A computer built from the idea up, then followed into the world: Bell Labs, phone phreaks, Unix, GNU, Linux and AI.",
       "cover": "/img/books/the-free-machine-book-one.jpg",
       "asin": "",
-      "youtube": ""
+      "youtube": [
+        {
+          "label": "Part I",
+          "url": "https://youtu.be/DIEiuN2EBBg"
+        },
+        {
+          "label": "Part II",
+          "url": "https://youtu.be/J2moscLU0pE"
+        },
+        {
+          "label": "Part III",
+          "url": "https://youtu.be/PHrZ-UDxRRk"
+        },
+        {
+          "label": "Part IV, ch. 34–45",
+          "url": "https://youtu.be/21g98vSMTNQ"
+        },
+        {
+          "label": "Part IV, ch. 46–56",
+          "url": "https://youtu.be/mkQu3dvLMLw"
+        }
+      ]
     },
     {
       "title": "The Free Machine, Book Two",
@@ -47,7 +77,24 @@
       "blurb": "The machine in your hands: live on Linux, build software with an AI partner, run a Pi radio station, wire a light show.",
       "cover": "/img/books/the-free-machine-book-two.jpg",
       "asin": "",
-      "youtube": ""
+      "youtube": [
+        {
+          "label": "Part V",
+          "url": "https://youtu.be/mUtF2Z5gIN0"
+        },
+        {
+          "label": "Part VI",
+          "url": "https://youtu.be/xwKwuRjBHYc"
+        },
+        {
+          "label": "Parts VII–VIII",
+          "url": "https://youtu.be/RsKOpn_r_yA"
+        },
+        {
+          "label": "Parts IX–X",
+          "url": "https://youtu.be/e-z7iF-9Wg8"
+        }
+      ]
     },
     {
       "title": "Light Through the Holes",
@@ -55,15 +102,15 @@
       "blurb": "A history of the sieve, from Eratosthenes' counting board to machines that listened for light.",
       "cover": "/img/books/light-through-the-holes.jpg",
       "asin": "",
-      "youtube": ""
+      "youtube": "https://youtu.be/kgZy1sMyffM"
     },
     {
       "title": "The Garden That Computes",
       "subtitle": "Computers Grown, Not Built",
       "blurb": "Nanites, crops, cells and seeds: what a living machine can do, and where the toll still catches it.",
       "cover": "/img/books/the-garden-that-computes.jpg",
-      "asin": "",
-      "youtube": ""
+      "asin": "B0HPZL5FX8",
+      "youtube": "https://youtu.be/0TDmN6vTf1A"
     },
     {
       "title": "The Real Gatekeeper",
@@ -82,16 +129,142 @@
       "blurb": "",
       "note": "Arc Two (Books 11–20) coming.",
       "books": [
-        { "n": 1,  "title": "Forward Only",           "tagline": "Forward is free. Backward is forever.",   "cover": "/img/books/nc-01-forward-only.jpg",           "asin": "" },
-        { "n": 2,  "title": "The Ceiling",            "tagline": "Anyone may seal it. Only two may open it.", "cover": "/img/books/nc-02-the-ceiling.jpg",          "asin": "" },
-        { "n": 3,  "title": "The Mirror Abacus",      "tagline": "",                                         "cover": "/img/books/nc-03-the-mirror-abacus.jpg",      "asin": "" },
-        { "n": 4,  "title": "The Sideways Country",   "tagline": "Two cities. One question.",                "cover": "/img/books/nc-04-the-sideways-country.jpg",   "asin": "" },
-        { "n": 5,  "title": "The Ring of N",          "tagline": "Every walk comes back on itself.",         "cover": "/img/books/nc-05-the-ring-of-n.jpg",          "asin": "" },
-        { "n": 6,  "title": "The Wander",             "tagline": "Left, right, rest.",                       "cover": "/img/books/nc-06-the-wander.jpg",             "asin": "" },
-        { "n": 7,  "title": "The Dial",               "tagline": "The signal is free.",                      "cover": "/img/books/nc-07-the-dial.jpg",               "asin": "" },
-        { "n": 8,  "title": "The Log Bridge",         "tagline": "Houses multiply. Steps add.",              "cover": "/img/books/nc-08-the-log-bridge.jpg",         "asin": "" },
-        { "n": 9,  "title": "The Hoard",              "tagline": "Seal now. Read later.",                    "cover": "/img/books/nc-09-the-hoard.jpg",              "asin": "" },
-        { "n": 10, "title": "The Tower Nobody Built", "tagline": "What is built first is kept.",             "cover": "/img/books/nc-10-the-tower-nobody-built.jpg", "asin": "" }
+        {
+          "n": 1,
+          "title": "Forward Only",
+          "tagline": "Forward is free. Backward is forever.",
+          "cover": "/img/books/nc-01-forward-only.jpg",
+          "asin": "B0HQVZMFGW",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/Y6o6-Ar8YaE"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/SDZI7Bxic20"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "title": "The Ceiling",
+          "tagline": "Anyone may seal it. Only two may open it.",
+          "cover": "/img/books/nc-02-the-ceiling.jpg",
+          "asin": "B0HQVS799C",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/hT0T6N8jBF8"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/0du7uwOOEUs"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "title": "The Mirror Abacus",
+          "tagline": "",
+          "cover": "/img/books/nc-03-the-mirror-abacus.jpg",
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/hx4DN2dN_xU"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/2aL6gc3FVWY"
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "title": "The Sideways Country",
+          "tagline": "Two cities. One question.",
+          "cover": "/img/books/nc-04-the-sideways-country.jpg",
+          "asin": ""
+        },
+        {
+          "n": 5,
+          "title": "The Ring of N",
+          "tagline": "Every walk comes back on itself.",
+          "cover": "/img/books/nc-05-the-ring-of-n.jpg",
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/PhipDmq4eXI"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/wFZpBP4wRps"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "title": "The Wander",
+          "tagline": "Left, right, rest.",
+          "cover": "/img/books/nc-06-the-wander.jpg",
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/kGkc7HxjbVw"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/iNTf4fQJ4fQ"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "title": "The Dial",
+          "tagline": "The signal is free.",
+          "cover": "/img/books/nc-07-the-dial.jpg",
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/bgbxuTFOKZE"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "title": "The Log Bridge",
+          "tagline": "Houses multiply. Steps add.",
+          "cover": "/img/books/nc-08-the-log-bridge.jpg",
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/La7-0Jh7w04"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/_QxPCE6QHeY"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "title": "The Hoard",
+          "tagline": "Seal now. Read later.",
+          "cover": "/img/books/nc-09-the-hoard.jpg",
+          "asin": ""
+        },
+        {
+          "n": 10,
+          "title": "The Tower Nobody Built",
+          "tagline": "What is built first is kept.",
+          "cover": "/img/books/nc-10-the-tower-nobody-built.jpg",
+          "asin": ""
+        }
       ]
     }
   ]

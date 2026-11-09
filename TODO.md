@@ -6,15 +6,14 @@ Books live in `books.json`. Fill in a field, then deploy. No layout changes need
 An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no `youtube` show "Coming soon".
 
 ## Book ASINs needed (`books.json` → `asin`)
-- [ ] The Big Book of Prime Secrets: How Numbers Keep Secrets, and Why No One Has Cracked Them
-- [ ] The Free Machine, Book One
-- [ ] The Free Machine, Book Two
+- [x] The Big Book of Prime Secrets (B0HPZXW944; possible paperback B0HPZY5HM9 unverified)
+- [ ] The Free Machine, Book One and Book Two (candidates B0HP7MM9DG, B0HP76ZYBR, B0HP77MHLW, B0HP79LB5G: unverified)
 - [ ] Light Through the Holes: Sieves, Strikes, and the Price of Seeing Primes
-- [ ] The Garden That Computes: Computers Grown, Not Built
+- [x] The Garden That Computes (B0HPZL5FX8; second edition B0HPZXF6ZH not shown)
 - [ ] The Real Gatekeeper (if it gets a Kindle edition)
 - [ ] The Number Country, Arc One (`series[0].books[n].asin`):
-  - [ ] 1 Forward Only
-  - [ ] 2 The Ceiling
+  - [x] 1 Forward Only (B0HQVZMFGW; second edition B0HQW6VBVY not shown)
+  - [x] 2 The Ceiling (B0HQVS799C; second edition B0HQWW4LPN not shown)
   - [ ] 3 The Mirror Abacus
   - [ ] 4 The Sideways Country
   - [ ] 5 The Ring of N
@@ -27,7 +26,10 @@ An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no 
 
 ## YouTube URLs needed (`books.json` → `youtube`)
 - [ ] The Real Gatekeeper audiobook (card currently says "Audiobook on YouTube · link coming soon")
-- [ ] Optional: The Rooms That Hold Us read-along (~/roomstape/out has a YouTube description, so a video seems to exist)
+- [x] Read-alongs linked: Rooms, Preservation and Horizons, Light Through the Holes, Garden
+- [x] Multi-part read-alongs linked, every part on the card: Big Book, Number Country 1–3 and 5–8
+- [ ] The Free Machine Books One and Two: YouTube playlist URLs (will replace the 5 + 4 part links with one link each)
+- [ ] The Dial: Vol. 1 video ID (only Vol. 2 is linked)
 - [ ] Optional: read-alongs for any other book with a *tape folder (Wall at Two, Horizons, Light Through the Holes, Garden, Number Country books)
 
 ## Music & Art links needed (index.html, "Music & Art" section)
