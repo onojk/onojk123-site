@@ -408,12 +408,12 @@
   function linkRow(b,fallback){
     var row=el('p','links');
     if(okAsin(b.asin))row.appendChild(ext(AMZ+b.asin,'Get it on Amazon'));
-    var v=videos(b.youtube);
-    if(v.length===1&&!v[0].label)row.appendChild(ext(v[0].url,'Watch the free read-along'));
+    var v=videos(b.youtube), vl=b.youtubeLabel||'Watch the free read-along';
+    if(v.length===1&&!v[0].label)row.appendChild(ext(v[0].url,vl));
     else if(v.length){
-      var g=el('span','vols');g.appendChild(el('span','vols-l','Watch the free read-along:'));
+      var g=el('span','vols');g.appendChild(el('span','vols-l',vl+':'));
       v.forEach(function(x,i){var a=ext(x.url,x.label||('Part '+(i+1)));
-        a.setAttribute('aria-label','Watch the free read-along of '+b.title+', '+(x.label||('part '+(i+1))));
+        a.setAttribute('aria-label',vl+' of '+b.title+', '+(x.label||('part '+(i+1))));
         if(i){var sep=el('span','vols-sep','·');sep.setAttribute('aria-hidden','true');g.appendChild(sep);}
         g.appendChild(a);});
       row.appendChild(g);

@@ -1,5 +1,5 @@
 {
-  "_howto": "Add a book by copying an entry in 'books'. asin = the 10-character Amazon ID (leave \"\" if not live yet; never guess). youtube = full URL of a read-along/audiobook, or \"\". cover = path under /img/books/ (600px tall JPG), or \"\" for a title-only placeholder. note = optional short status line shown when there is no link.",
+  "_howto": "Add a book by copying an entry in 'books'. asin = the 10-character Amazon ID (leave \"\" if not live yet; never guess). youtube = full URL of a read-along/audiobook, or \"\". cover = path under /img/books/ (600px tall JPG), or \"\" for a title-only placeholder. note = optional short status line shown when there is no link. youtubeLabel = optional link text instead of \"Watch the free read-along\".",
   "books": [
     {
       "title": "The Wall at Two",
@@ -117,9 +117,9 @@
       "subtitle": "What Difficulty Is Made Of, and Who Paid It First",
       "blurb": "The toll, the forgetting, the buffer and the asymmetry: what difficulty is made of.",
       "cover": "/img/books/the-real-gatekeeper.jpg",
-      "asin": "",
-      "youtube": "",
-      "note": "Audiobook on YouTube · link coming soon"
+      "asin": "B0HNG5RMF7",
+      "youtube": "https://youtu.be/QYf_ayng_wY",
+      "youtubeLabel": "Watch the free audiobook"
     }
   ],
   "series": [

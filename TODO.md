@@ -7,11 +7,10 @@ An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no 
 
 ## Book ASINs needed (`books.json` → `asin`)
 - [x] The Big Book of Prime Secrets (B0HPZXW944; possible paperback B0HPZY5HM9 unverified)
-- [x] The Free Machine, Book One (Kindle B0HP77MHLW) and Book Two (Kindle B0HP7MM9DG). Other candidates B0HP76ZYBR and B0HP79LB5G are unconfirmed and unused.
-- Paperbacks known but not linked (cards keep the Kindle link): The Rooms That Hold Us B0HNG5RMF7
+- [ ] The Free Machine: CONFIRM the mapping, which may be swapped. Currently Book One = B0HP77MHLW and Book Two = B0HP7MM9DG (Kindle). Other candidates B0HP76ZYBR and B0HP79LB5G are unconfirmed and unused.
 - [ ] Light Through the Holes: Sieves, Strikes, and the Price of Seeing Primes
 - [x] The Garden That Computes (B0HPZL5FX8; second edition B0HPZXF6ZH not shown)
-- [ ] The Real Gatekeeper (if it gets a Kindle edition)
+- [x] The Real Gatekeeper (B0HNG5RMF7)
 - [ ] The Number Country, Arc One (`series[0].books[n].asin`):
   - [x] 1 Forward Only (B0HQVZMFGW; second edition B0HQW6VBVY not shown)
   - [x] 2 The Ceiling (B0HQVS799C; second edition B0HQWW4LPN not shown)
@@ -26,7 +25,7 @@ An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no 
 - [ ] The Number Country KDP series page URL (could link the series heading)
 
 ## YouTube URLs needed (`books.json` → `youtube`)
-- [ ] The Real Gatekeeper audiobook (card currently says "Audiobook on YouTube · link coming soon")
+- [x] The Real Gatekeeper audiobook (QYf_ayng_wY, labelled "Watch the free audiobook")
 - [x] Read-alongs linked: The Wall at Two, Rooms, Preservation and Horizons, Light Through the Holes, Garden
 - [x] Multi-part read-alongs linked, every part on the card: Big Book, Number Country 1–3 and 5–8
 - [ ] The Free Machine Books One and Two: YouTube playlist URLs (will replace the 5 + 4 part links with one link each)
