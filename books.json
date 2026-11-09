@@ -7,7 +7,7 @@
       "blurb": "N gives you the circle. It withholds the angle. A visual way into why factoring is hard.",
       "cover": "/img/books/the-wall-at-two.jpg",
       "asin": "B0H74NF3LY",
-      "youtube": ""
+      "youtube": "https://youtu.be/uf-J8AQUsz8"
     },
     {
       "title": "Preservation and Horizons",
@@ -47,7 +47,7 @@
       "subtitle": "How Computers Work and Who Fought to Control Them",
       "blurb": "A computer built from the idea up, then followed into the world: Bell Labs, phone phreaks, Unix, GNU, Linux and AI.",
       "cover": "/img/books/the-free-machine-book-one.jpg",
-      "asin": "",
+      "asin": "B0HP77MHLW",
       "youtube": [
         {
           "label": "Part I",
@@ -76,7 +76,7 @@
       "subtitle": "Daily Driving Linux, Building With AI, and Wiring Your Own Computer",
       "blurb": "The machine in your hands: live on Linux, build software with an AI partner, run a Pi radio station, wire a light show.",
       "cover": "/img/books/the-free-machine-book-two.jpg",
-      "asin": "",
+      "asin": "B0HP7MM9DG",
       "youtube": [
         {
           "label": "Part V",

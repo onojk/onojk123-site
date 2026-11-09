@@ -7,7 +7,8 @@ An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no 
 
 ## Book ASINs needed (`books.json` → `asin`)
 - [x] The Big Book of Prime Secrets (B0HPZXW944; possible paperback B0HPZY5HM9 unverified)
-- [ ] The Free Machine, Book One and Book Two (candidates B0HP7MM9DG, B0HP76ZYBR, B0HP77MHLW, B0HP79LB5G: unverified)
+- [x] The Free Machine, Book One (Kindle B0HP77MHLW) and Book Two (Kindle B0HP7MM9DG). Other candidates B0HP76ZYBR and B0HP79LB5G are unconfirmed and unused.
+- Paperbacks known but not linked (cards keep the Kindle link): The Rooms That Hold Us B0HNG5RMF7
 - [ ] Light Through the Holes: Sieves, Strikes, and the Price of Seeing Primes
 - [x] The Garden That Computes (B0HPZL5FX8; second edition B0HPZXF6ZH not shown)
 - [ ] The Real Gatekeeper (if it gets a Kindle edition)
@@ -26,11 +27,11 @@ An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no 
 
 ## YouTube URLs needed (`books.json` → `youtube`)
 - [ ] The Real Gatekeeper audiobook (card currently says "Audiobook on YouTube · link coming soon")
-- [x] Read-alongs linked: Rooms, Preservation and Horizons, Light Through the Holes, Garden
+- [x] Read-alongs linked: The Wall at Two, Rooms, Preservation and Horizons, Light Through the Holes, Garden
 - [x] Multi-part read-alongs linked, every part on the card: Big Book, Number Country 1–3 and 5–8
 - [ ] The Free Machine Books One and Two: YouTube playlist URLs (will replace the 5 + 4 part links with one link each)
 - [ ] The Dial: Vol. 1 video ID (only Vol. 2 is linked)
-- [ ] Optional: read-alongs for any other book with a *tape folder (Wall at Two, Horizons, Light Through the Holes, Garden, Number Country books)
+- [ ] Optional: read-alongs for any other book with a *tape folder (Number Country books 4, 9, 10)
 
 ## Music & Art links needed (index.html, "Music & Art" section)
 - [ ] YouTube channel URL
