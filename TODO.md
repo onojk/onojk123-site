@@ -27,10 +27,10 @@ An `asin` must be the exact 10-character Amazon ID. Cards with no `asin` and no 
 ## YouTube URLs needed (`books.json` → `youtube`)
 - [x] The Real Gatekeeper audiobook (QYf_ayng_wY, labelled "Watch the free audiobook")
 - [x] Read-alongs linked: The Wall at Two, Rooms, Preservation and Horizons, Light Through the Holes, Garden
-- [x] Multi-part read-alongs linked, every part on the card: Big Book, Number Country 1–3 and 5–8
+- [x] Multi-part read-alongs linked, every part on the card: Big Book, Number Country 1–8
 - [ ] The Free Machine Books One and Two: YouTube playlist URLs (will replace the 5 + 4 part links with one link each)
 - [ ] The Dial: Vol. 1 video ID (only Vol. 2 is linked)
-- [ ] Optional: read-alongs for any other book with a *tape folder (Number Country books 4, 9, 10)
+- [ ] Optional: read-alongs for any other book with a *tape folder (Number Country books 9, 10)
 
 ## Music & Art links needed (index.html, "Music & Art" section)
 - [ ] YouTube channel URL

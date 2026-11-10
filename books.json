@@ -185,7 +185,17 @@
           "title": "The Sideways Country",
           "tagline": "Two cities. One question.",
           "cover": "/img/books/nc-04-the-sideways-country.jpg",
-          "asin": ""
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/awwTRSR-HZY"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/2J5cxMMrxbw"
+            }
+          ]
         },
         {
           "n": 5,
