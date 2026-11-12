@@ -266,7 +266,17 @@
           "title": "The Hoard",
           "tagline": "Seal now. Read later.",
           "cover": "/img/books/nc-09-the-hoard.jpg",
-          "asin": ""
+          "asin": "",
+          "youtube": [
+            {
+              "label": "Vol. 1",
+              "url": "https://youtu.be/HEnGRKa5fYU"
+            },
+            {
+              "label": "Vol. 2",
+              "url": "https://youtu.be/_-7iEVYjdc4"
+            }
+          ]
         },
         {
           "n": 10,
