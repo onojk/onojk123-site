@@ -1,0 +1,641 @@
+{
+  "_readme": "Source of truth for the Books shelf. Edit, then `make build`. Any value \"TODO\" is unknown and is skipped by the build. status: live | coming | TODO. formats[].type: kindle | paperback | audiobook | youtube-readalong. blurb_status: DRAFT (needs owner approval) | from-metadata (copied from the owner's blurb/metadata files) | approved | TODO.",
+  "series": {
+    "The Number Country": {
+      "arc": "Arc One",
+      "blurb": "TODO",
+      "note": "Arc Two (Books 11–20) coming.",
+      "series_url": "TODO"
+    }
+  },
+  "books": [
+    {
+      "id": "the-wall-at-two",
+      "title": "The Wall at Two",
+      "subtitle": "Seeing Why a Number Keeps a Secret",
+      "series": null,
+      "series_number": null,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0H74NF3LY",
+          "url": "https://www.amazon.com/dp/B0H74NF3LY"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "N gives you the circle. It withholds the angle. A visual way into why factoring is hard.",
+      "blurb_status": "DRAFT",
+      "cover": "/img/books/the-wall-at-two.jpg",
+      "readalong_urls": [
+        {
+          "label": "",
+          "url": "https://youtu.be/uf-J8AQUsz8"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "preservation-and-horizons",
+      "title": "Preservation and Horizons",
+      "subtitle": "On Difficulty, Verification, and Structural Limits",
+      "series": null,
+      "series_number": null,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0GHZNB9WP",
+          "url": "https://www.amazon.com/dp/B0GHZNB9WP"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "What it costs to check an answer, what it costs to find one, and where the structural limits sit.",
+      "blurb_status": "DRAFT",
+      "cover": "/img/books/preservation-and-horizons.jpg",
+      "readalong_urls": [
+        {
+          "label": "",
+          "url": "https://youtu.be/SAHCM3tFhv4"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "the-rooms-that-hold-us",
+      "title": "The Rooms That Hold Us",
+      "subtitle": "Storms, Survival, and the Gatherings That Remake a People",
+      "series": null,
+      "series_number": null,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HNG99FWQ",
+          "url": "https://www.amazon.com/dp/B0HNG99FWQ"
+        },
+        {
+          "type": "paperback",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "How storms change us for good, and how small gatherings turn private survival into the remaking of a people.",
+      "blurb_status": "from-metadata",
+      "cover": "/img/books/the-rooms-that-hold-us.jpg",
+      "readalong_urls": [
+        {
+          "label": "",
+          "url": "https://youtu.be/J778DGNDkbQ"
+        }
+      ],
+      "notes": [
+        "Paperback exists per owner; ASIN/URL not found in repo or ~/roomstape."
+      ]
+    },
+    {
+      "id": "the-real-gatekeeper",
+      "title": "The Real Gatekeeper",
+      "subtitle": "What Difficulty Is Made Of, and Who Paid It First",
+      "series": null,
+      "series_number": null,
+      "status": "live",
+      "formats": [
+        {
+          "type": "audiobook",
+          "asin": "B0HNG5RMF7",
+          "url": "https://www.amazon.com/dp/B0HNG5RMF7"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "The toll, the forgetting, the buffer and the asymmetry: what difficulty is made of.",
+      "blurb_status": "DRAFT",
+      "cover": "/img/books/the-real-gatekeeper.jpg",
+      "readalong_urls": [
+        {
+          "label": "",
+          "url": "https://youtu.be/QYf_ayng_wY"
+        }
+      ],
+      "readalong_label": "Watch the free audiobook",
+      "notes": [
+        "CONFLICT: brief calls B0HNG5RMF7 the audiobook ASIN; repo commit c7f6a6c used it as the Kindle link. Kindle ASIN TODO if separate."
+      ]
+    },
+    {
+      "id": "the-free-machine-book-one",
+      "title": "The Free Machine, Book One",
+      "subtitle": "How Computers Work and Who Fought to Control Them",
+      "series": "The Free Machine",
+      "series_number": 1,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HP77MHLW",
+          "url": "https://www.amazon.com/dp/B0HP77MHLW"
+        },
+        {
+          "type": "paperback",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "A computer built from the idea up, then followed into the world: Bell Labs, phone phreaks, Unix, GNU, Linux and AI.",
+      "blurb_status": "from-metadata",
+      "cover": "/img/books/the-free-machine-book-one.jpg",
+      "readalong_urls": [
+        {
+          "label": "Part I",
+          "url": "https://youtu.be/DIEiuN2EBBg"
+        },
+        {
+          "label": "Part II",
+          "url": "https://youtu.be/J2moscLU0pE"
+        },
+        {
+          "label": "Part III",
+          "url": "https://youtu.be/PHrZ-UDxRRk"
+        },
+        {
+          "label": "Part IV, ch. 34–45",
+          "url": "https://youtu.be/21g98vSMTNQ"
+        },
+        {
+          "label": "Part IV, ch. 46–56",
+          "url": "https://youtu.be/mkQu3dvLMLw"
+        }
+      ],
+      "notes": [
+        "CONFIRM Kindle ASIN mapping (legacy TODO.md: Book One/Two may be swapped; candidates B0HP76ZYBR, B0HP79LB5G unused).",
+        "Read-along playlist URL TODO (would replace the per-part links)."
+      ]
+    },
+    {
+      "id": "the-free-machine-book-two",
+      "title": "The Free Machine, Book Two",
+      "subtitle": "Daily Driving Linux, Building With AI, and Wiring Your Own Computer",
+      "series": "The Free Machine",
+      "series_number": 2,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HP7MM9DG",
+          "url": "https://www.amazon.com/dp/B0HP7MM9DG"
+        },
+        {
+          "type": "paperback",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "The machine in your hands: live on Linux, build software with an AI partner, run a Pi radio station, wire a light show.",
+      "blurb_status": "from-metadata",
+      "cover": "/img/books/the-free-machine-book-two.jpg",
+      "readalong_urls": [
+        {
+          "label": "Part V",
+          "url": "https://youtu.be/mUtF2Z5gIN0"
+        },
+        {
+          "label": "Part VI",
+          "url": "https://youtu.be/xwKwuRjBHYc"
+        },
+        {
+          "label": "Parts VII–VIII",
+          "url": "https://youtu.be/RsKOpn_r_yA"
+        },
+        {
+          "label": "Parts IX–X",
+          "url": "https://youtu.be/e-z7iF-9Wg8"
+        }
+      ],
+      "notes": [
+        "CONFIRM Kindle ASIN mapping (see Book One).",
+        "Read-along playlist URL TODO."
+      ]
+    },
+    {
+      "id": "light-through-the-holes",
+      "title": "Light Through the Holes",
+      "subtitle": "Sieves, Strikes, and the Price of Seeing Primes",
+      "series": null,
+      "series_number": null,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "A history of the sieve, from Eratosthenes' counting board to machines that listened for light.",
+      "blurb_status": "from-metadata",
+      "cover": "/img/books/light-through-the-holes.jpg",
+      "readalong_urls": [
+        {
+          "label": "",
+          "url": "https://youtu.be/kgZy1sMyffM"
+        }
+      ],
+      "notes": [
+        "No ASIN in repo; status unknown."
+      ]
+    },
+    {
+      "id": "the-garden-that-computes",
+      "title": "The Garden That Computes",
+      "subtitle": "Computers Grown, Not Built",
+      "series": null,
+      "series_number": null,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HPZL5FX8",
+          "url": "https://www.amazon.com/dp/B0HPZL5FX8"
+        },
+        {
+          "type": "paperback",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "Nanites, crops, cells and seeds: what a living machine can do, and where the toll still catches it.",
+      "blurb_status": "from-metadata",
+      "cover": "/img/books/the-garden-that-computes.jpg",
+      "readalong_urls": [
+        {
+          "label": "",
+          "url": "https://youtu.be/0TDmN6vTf1A"
+        }
+      ],
+      "notes": [
+        "Legacy TODO.md lists a second edition B0HPZXF6ZH (not shown)."
+      ]
+    },
+    {
+      "id": "the-big-book-of-prime-secrets",
+      "title": "The Big Book of Prime Secrets",
+      "subtitle": "How Numbers Keep Secrets, and Why No One Has Cracked Them",
+      "series": null,
+      "series_number": null,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HPZXW944",
+          "url": "https://www.amazon.com/dp/B0HPZXW944"
+        },
+        {
+          "type": "paperback",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "Four books in one volume: The Wall at Two, Preservation and Horizons, The Real Gatekeeper and Light Through the Holes.",
+      "blurb_status": "from-metadata",
+      "cover": "/img/books/big-book-of-prime-secrets.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/YzuMakgTa5k"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/8QsHtq_bP4g"
+        }
+      ],
+      "notes": [
+        "Not in the brief's list but live on the current site; kept. Possible paperback B0HPZY5HM9 is unverified (legacy TODO.md)."
+      ]
+    },
+    {
+      "id": "nc-01-forward-only",
+      "title": "Forward Only",
+      "subtitle": "The Number Country, Book One",
+      "series": "The Number Country",
+      "series_number": 1,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HQVZMFGW",
+          "url": "https://www.amazon.com/dp/B0HQVZMFGW"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-01-forward-only.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/Y6o6-Ar8YaE"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/SDZI7Bxic20"
+        }
+      ],
+      "tagline": "Forward is free. Backward is forever.",
+      "notes": [
+        "Live status: ASK OWNER.",
+        "Legacy TODO.md lists a second edition B0HQW6VBVY (not shown)."
+      ]
+    },
+    {
+      "id": "nc-02-the-ceiling",
+      "title": "The Ceiling",
+      "subtitle": "The Number Country, Book Two",
+      "series": "The Number Country",
+      "series_number": 2,
+      "status": "live",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "B0HQVS799C",
+          "url": "https://www.amazon.com/dp/B0HQVS799C"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-02-the-ceiling.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/hT0T6N8jBF8"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/0du7uwOOEUs"
+        }
+      ],
+      "tagline": "Anyone may seal it. Only two may open it.",
+      "notes": [
+        "Live status: ASK OWNER.",
+        "Legacy TODO.md lists a second edition B0HQWW4LPN (not shown). Cover was cropped from the paperback wrap."
+      ]
+    },
+    {
+      "id": "nc-03-the-mirror-abacus",
+      "title": "The Mirror Abacus",
+      "subtitle": "The Number Country, Book Three",
+      "series": "The Number Country",
+      "series_number": 3,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-03-the-mirror-abacus.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/hx4DN2dN_xU"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/2aL6gc3FVWY"
+        }
+      ],
+      "notes": [
+        "Live status: ASK OWNER."
+      ]
+    },
+    {
+      "id": "nc-04-the-sideways-country",
+      "title": "The Sideways Country",
+      "subtitle": "The Number Country, Book Four",
+      "series": "The Number Country",
+      "series_number": 4,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-04-the-sideways-country.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/awwTRSR-HZY"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/2J5cxMMrxbw"
+        }
+      ],
+      "tagline": "Two cities. One question.",
+      "notes": [
+        "Live status: ASK OWNER."
+      ]
+    },
+    {
+      "id": "nc-05-the-ring-of-n",
+      "title": "The Ring of N",
+      "subtitle": "The Number Country, Book Five",
+      "series": "The Number Country",
+      "series_number": 5,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-05-the-ring-of-n.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/PhipDmq4eXI"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/wFZpBP4wRps"
+        }
+      ],
+      "tagline": "Every walk comes back on itself.",
+      "notes": [
+        "Live status: ASK OWNER."
+      ]
+    },
+    {
+      "id": "nc-06-the-wander",
+      "title": "The Wander",
+      "subtitle": "The Number Country, Book Six",
+      "series": "The Number Country",
+      "series_number": 6,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-06-the-wander.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/kGkc7HxjbVw"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/iNTf4fQJ4fQ"
+        }
+      ],
+      "tagline": "Left, right, rest.",
+      "notes": [
+        "Live status: ASK OWNER."
+      ]
+    },
+    {
+      "id": "nc-07-the-dial",
+      "title": "The Dial",
+      "subtitle": "The Number Country, Book Seven",
+      "series": "The Number Country",
+      "series_number": 7,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-07-the-dial.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/bgbxuTFOKZE"
+        }
+      ],
+      "tagline": "The signal is free.",
+      "notes": [
+        "Live status: ASK OWNER.",
+        "Read-along Vol. 1 URL TODO (only Vol. 2 known)."
+      ]
+    },
+    {
+      "id": "nc-08-the-log-bridge",
+      "title": "The Log Bridge",
+      "subtitle": "The Number Country, Book Eight",
+      "series": "The Number Country",
+      "series_number": 8,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-08-the-log-bridge.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/La7-0Jh7w04"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/_QxPCE6QHeY"
+        }
+      ],
+      "tagline": "Houses multiply. Steps add.",
+      "notes": [
+        "Live status: ASK OWNER."
+      ]
+    },
+    {
+      "id": "nc-09-the-hoard",
+      "title": "The Hoard",
+      "subtitle": "The Number Country, Book Nine",
+      "series": "The Number Country",
+      "series_number": 9,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-09-the-hoard.jpg",
+      "readalong_urls": [
+        {
+          "label": "Vol. 1",
+          "url": "https://youtu.be/HEnGRKa5fYU"
+        },
+        {
+          "label": "Vol. 2",
+          "url": "https://youtu.be/_-7iEVYjdc4"
+        }
+      ],
+      "tagline": "Seal now. Read later.",
+      "notes": [
+        "Live status: ASK OWNER."
+      ]
+    },
+    {
+      "id": "nc-10-the-tower-nobody-built",
+      "title": "The Tower Nobody Built",
+      "subtitle": "The Number Country, Book Ten",
+      "series": "The Number Country",
+      "series_number": 10,
+      "status": "TODO",
+      "formats": [
+        {
+          "type": "kindle",
+          "asin": "TODO",
+          "url": "TODO"
+        }
+      ],
+      "date": "TODO",
+      "blurb": "TODO",
+      "blurb_status": "TODO",
+      "cover": "/img/books/nc-10-the-tower-nobody-built.jpg",
+      "readalong_urls": [],
+      "tagline": "What is built first is kept.",
+      "notes": [
+        "Live status: ASK OWNER.",
+        "No read-along in repo."
+      ]
+    }
+  ]
+}

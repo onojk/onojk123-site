@@ -10,7 +10,9 @@
       "CNAME",
       "README.md",
       "**/*.bak*",
-      "TODO.md"
+      "TODO.md",
+      "Makefile",
+      "scripts/**"
     ]
   }
 }

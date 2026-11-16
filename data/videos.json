@@ -1,0 +1,277 @@
+{
+  "_readme": "kind: readalong | music-video | demo. title_status 'derived' = built from book title + part label, not the real YouTube title (replace via yt-dlp in Stage 5).",
+  "videos": [
+    {
+      "title": "The Wall at Two: Read-along",
+      "title_status": "derived",
+      "url": "https://youtu.be/uf-J8AQUsz8",
+      "book_id": "the-wall-at-two",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "Preservation and Horizons: Read-along",
+      "title_status": "derived",
+      "url": "https://youtu.be/SAHCM3tFhv4",
+      "book_id": "preservation-and-horizons",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Rooms That Hold Us: Read-along",
+      "title_status": "derived",
+      "url": "https://youtu.be/J778DGNDkbQ",
+      "book_id": "the-rooms-that-hold-us",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Real Gatekeeper: Audiobook",
+      "title_status": "derived",
+      "url": "https://youtu.be/QYf_ayng_wY",
+      "book_id": "the-real-gatekeeper",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book One: Read-along, Part I",
+      "title_status": "derived",
+      "url": "https://youtu.be/DIEiuN2EBBg",
+      "book_id": "the-free-machine-book-one",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book One: Read-along, Part II",
+      "title_status": "derived",
+      "url": "https://youtu.be/J2moscLU0pE",
+      "book_id": "the-free-machine-book-one",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book One: Read-along, Part III",
+      "title_status": "derived",
+      "url": "https://youtu.be/PHrZ-UDxRRk",
+      "book_id": "the-free-machine-book-one",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book One: Read-along, Part IV, ch. 34–45",
+      "title_status": "derived",
+      "url": "https://youtu.be/21g98vSMTNQ",
+      "book_id": "the-free-machine-book-one",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book One: Read-along, Part IV, ch. 46–56",
+      "title_status": "derived",
+      "url": "https://youtu.be/mkQu3dvLMLw",
+      "book_id": "the-free-machine-book-one",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book Two: Read-along, Part V",
+      "title_status": "derived",
+      "url": "https://youtu.be/mUtF2Z5gIN0",
+      "book_id": "the-free-machine-book-two",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book Two: Read-along, Part VI",
+      "title_status": "derived",
+      "url": "https://youtu.be/xwKwuRjBHYc",
+      "book_id": "the-free-machine-book-two",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book Two: Read-along, Parts VII–VIII",
+      "title_status": "derived",
+      "url": "https://youtu.be/RsKOpn_r_yA",
+      "book_id": "the-free-machine-book-two",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Free Machine, Book Two: Read-along, Parts IX–X",
+      "title_status": "derived",
+      "url": "https://youtu.be/e-z7iF-9Wg8",
+      "book_id": "the-free-machine-book-two",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "Light Through the Holes: Read-along",
+      "title_status": "derived",
+      "url": "https://youtu.be/kgZy1sMyffM",
+      "book_id": "light-through-the-holes",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Garden That Computes: Read-along",
+      "title_status": "derived",
+      "url": "https://youtu.be/0TDmN6vTf1A",
+      "book_id": "the-garden-that-computes",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Big Book of Prime Secrets: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/YzuMakgTa5k",
+      "book_id": "the-big-book-of-prime-secrets",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Big Book of Prime Secrets: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/8QsHtq_bP4g",
+      "book_id": "the-big-book-of-prime-secrets",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "Forward Only: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/Y6o6-Ar8YaE",
+      "book_id": "nc-01-forward-only",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "Forward Only: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/SDZI7Bxic20",
+      "book_id": "nc-01-forward-only",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Ceiling: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/hT0T6N8jBF8",
+      "book_id": "nc-02-the-ceiling",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Ceiling: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/0du7uwOOEUs",
+      "book_id": "nc-02-the-ceiling",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Mirror Abacus: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/hx4DN2dN_xU",
+      "book_id": "nc-03-the-mirror-abacus",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Mirror Abacus: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/2aL6gc3FVWY",
+      "book_id": "nc-03-the-mirror-abacus",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Sideways Country: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/awwTRSR-HZY",
+      "book_id": "nc-04-the-sideways-country",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Sideways Country: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/2J5cxMMrxbw",
+      "book_id": "nc-04-the-sideways-country",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Ring of N: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/PhipDmq4eXI",
+      "book_id": "nc-05-the-ring-of-n",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Ring of N: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/wFZpBP4wRps",
+      "book_id": "nc-05-the-ring-of-n",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Wander: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/kGkc7HxjbVw",
+      "book_id": "nc-06-the-wander",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Wander: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/iNTf4fQJ4fQ",
+      "book_id": "nc-06-the-wander",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Dial: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/bgbxuTFOKZE",
+      "book_id": "nc-07-the-dial",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Log Bridge: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/La7-0Jh7w04",
+      "book_id": "nc-08-the-log-bridge",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Log Bridge: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/_QxPCE6QHeY",
+      "book_id": "nc-08-the-log-bridge",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Hoard: Read-along, Vol. 1",
+      "title_status": "derived",
+      "url": "https://youtu.be/HEnGRKa5fYU",
+      "book_id": "nc-09-the-hoard",
+      "kind": "readalong",
+      "date": "TODO"
+    },
+    {
+      "title": "The Hoard: Read-along, Vol. 2",
+      "title_status": "derived",
+      "url": "https://youtu.be/_-7iEVYjdc4",
+      "book_id": "nc-09-the-hoard",
+      "kind": "readalong",
+      "date": "TODO"
+    }
+  ]
+}
